@@ -131,15 +131,15 @@ const vi = {
     cloudQ: "Có cần cloud không?",
     cloudA:
       "Không. Ứng dụng ưu tiên local-first nên dự án, ghi chú và lệnh của bạn nằm trên máy.",
-    platformsQ: "Có phải chỉ dành cho Windows không?",
+    platformsQ: "Hỗ trợ những nền tảng nào?",
     platformsA:
-      "Không. Trang releases là nơi đúng để xem các bản build hiện đang có cho nhiều nền tảng khác nhau.",
+      "Hỗ trợ Windows, macOS, Linux.",
   },
   footer: {
-    domain: "projects-runner.laychu.com",
+    domain: "Một sản phẩm của namhnz 💗 2026",
     languageToggle: "Chuyển ngôn ngữ",
-    repository: "Repository",
-    releases: "Releases",
+    email: "namqhong@gmail.com",
+    telegram: "@namhnz",
   },
   toasts: {
     openingTitle: "Đang mở releases",

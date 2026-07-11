@@ -131,15 +131,15 @@ const en = {
     cloudQ: "Does it need the cloud?",
     cloudA:
       "No. The app is local-first, so your projects, notes, and commands stay on your machine.",
-    platformsQ: "Is it limited to Windows?",
+    platformsQ: "Which platforms are supported?",
     platformsA:
-      "No. The releases page is the right place to check the currently available builds for different platforms.",
+      "Supports Windows, macOS, and Linux.",
   },
   footer: {
-    domain: "projects-runner.laychu.com",
+    domain: "Một sản phẩm của namhnz 💗 2026",
     languageToggle: "Switch language",
-    repository: "Repository",
-    releases: "Releases",
+    email: "namqhong@gmail.com",
+    telegram: "@namhnz",
   },
   toasts: {
     openingTitle: "Opening releases",

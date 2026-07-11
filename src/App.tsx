@@ -6,8 +6,10 @@ import {
   Github,
   Keyboard,
   Layers3,
+  Mail,
   MonitorSmartphone,
   Play,
+  Send,
   Settings2,
   ShieldCheck,
   Sparkles,
@@ -25,7 +27,6 @@ import {
 import { Button } from "@/components/motion/button/base";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { StatefulButton } from "@/components/motion/button/stateful";
-import { NumberTicker } from "@/components/motion/number-ticker";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { SharedLayoutBg } from "@/components/motion/shared-layout-bg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/motion/tabs";
@@ -38,6 +39,8 @@ import { cn } from "@/lib/utils";
 
 const REPOSITORY_URL = "https://github.com/ocampoje17/projects-runner-app";
 const RELEASES_URL = "https://github.com/ocampoje17/projects-runner-app/releases";
+const EMAIL_URL = "mailto:namqhong@gmail.com";
+const TELEGRAM_URL = "https://t.me/namhnz";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -58,12 +61,6 @@ function App() {
     { href: "#workflow", label: t("nav.workflow") },
     { href: "#preview", label: t("nav.preview") },
     { href: "#faq", label: t("nav.faq") },
-  ];
-
-  const metrics = [
-    { label: t("metrics.projects"), value: 48, suffix: "+" },
-    { label: t("metrics.commands"), value: 320, suffix: "+" },
-    { label: t("metrics.saved"), value: 12, suffix: "s" },
   ];
 
   const features = [
@@ -317,23 +314,6 @@ function App() {
                 {t("hero.explore")}
                 <ArrowRight className="h-4 w-4" />
               </MagneticButton>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.16} className="grid grid-cols-3 gap-3 sm:max-w-lg">
-              {metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="glass-panel rounded-2xl px-3 py-3 text-center sm:px-4"
-                >
-                  <div className="text-xl font-semibold tracking-tight sm:text-2xl">
-                    <NumberTicker value={metric.value} />
-                    <span className="text-sm text-muted-foreground"> {metric.suffix}</span>
-                  </div>
-                  <div className="mt-1 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
             </ScrollReveal>
           </div>
 
@@ -641,24 +621,23 @@ function App() {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-            <span>{t("meta.languageLabel")}: {language.toUpperCase()}</span>
-            <span className="h-1 w-1 rounded-full bg-border" />
             <a
-              href={REPOSITORY_URL}
+              href={EMAIL_URL}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-foreground"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border/70 bg-card/50 px-3 py-1.5 transition-colors hover:text-foreground"
             >
-              {t("footer.repository")}
+              <Mail className="h-4 w-4 shrink-0" />
+              {t("footer.email")}
             </a>
-            <span className="h-1 w-1 rounded-full bg-border" />
             <a
-              href={RELEASES_URL}
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-foreground"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border/70 bg-card/50 px-3 py-1.5 transition-colors hover:text-foreground"
             >
-              {t("footer.releases")}
+              <Send className="h-4 w-4 shrink-0" />
+              {t("footer.telegram")}
             </a>
           </div>
         </div>
