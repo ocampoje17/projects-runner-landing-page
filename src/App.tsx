@@ -1,6 +1,5 @@
 import {
   ArrowRight,
-  CheckCircle2,
   Download,
   FolderKanban,
   Github,
@@ -29,7 +28,6 @@ import { MagneticButton } from "@/components/motion/button/magnetic";
 import { StatefulButton } from "@/components/motion/button/stateful";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { SharedLayoutBg } from "@/components/motion/shared-layout-bg";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/motion/tabs";
 import { TextReveal } from "@/components/motion/text-reveal";
 import { TextShimmer } from "@/components/motion/text-shimmer";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
@@ -41,6 +39,7 @@ const REPOSITORY_URL = "https://github.com/ocampoje17/projects-runner-app";
 const RELEASES_URL = "https://github.com/ocampoje17/projects-runner-app/releases";
 const EMAIL_URL = "mailto:namqhong@gmail.com";
 const TELEGRAM_URL = "https://t.me/namhnz";
+const PREVIEW_SCREENSHOT_SRC = "/preview-screenshot-1.jpg";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -108,30 +107,6 @@ function App() {
     {
       title: t("workflow.step3Title"),
       detail: t("workflow.step3Body"),
-    },
-  ];
-
-  const previewTabs = [
-    {
-      value: "projects",
-      label: t("preview.projectsTab"),
-      title: t("preview.projectsTitle"),
-      body: t("preview.projectsBody"),
-      chips: [t("preview.projectsChip1"), t("preview.projectsChip2"), t("preview.projectsChip3")],
-    },
-    {
-      value: "commands",
-      label: t("preview.commandsTab"),
-      title: t("preview.commandsTitle"),
-      body: t("preview.commandsBody"),
-      chips: [t("preview.commandsChip1"), t("preview.commandsChip2"), t("preview.commandsChip3")],
-    },
-    {
-      value: "runtime",
-      label: t("preview.runtimeTab"),
-      title: t("preview.runtimeTitle"),
-      body: t("preview.runtimeBody"),
-      chips: [t("preview.runtimeChip1"), t("preview.runtimeChip2"), t("preview.runtimeChip3")],
     },
   ];
 
@@ -479,79 +454,15 @@ function App() {
             </p>
           </ScrollReveal>
 
-          <Tabs defaultValue="projects" className="space-y-5">
-            <TabsList className="flex flex-wrap gap-1 rounded-full border border-border bg-card/70 p-1">
-              {previewTabs.map((tab) => (
-                <TabsTrigger
-                  key={tab.value}
-                  value={tab.value}
-                  className="rounded-full px-4 py-2 text-sm"
-                >
-                  {tab.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {previewTabs.map((tab) => (
-              <TabsContent key={tab.value} value={tab.value}>
-                <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr]">
-                  <div className="glass-panel rounded-[1.75rem] p-6">
-                    <h3 className="text-2xl font-semibold tracking-tight">{tab.title}</h3>
-                    <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
-                      {tab.body}
-                    </p>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {tab.chips.map((chip) => (
-                        <span
-                          key={chip}
-                          className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs text-muted-foreground"
-                        >
-                          {chip}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <TiltCard className="glass-panel rounded-[1.75rem] p-5">
-                    <div className="mb-4 flex items-center justify-between gap-3">
-                      <div className="text-sm font-medium">{tab.label}</div>
-                      <AnimatedBadge
-                        icon={<span className="h-1.5 w-1.5 rounded-full bg-current" />}
-                        className="border border-primary/20 bg-primary/10 text-primary"
-                      >
-                        {t("workspaceCard.ready")}
-                      </AnimatedBadge>
-                    </div>
-                    <div className="space-y-3">
-                      {Array.from({ length: 4 }).map((_, index) => (
-                        <div
-                          key={`${tab.value}-${index}`}
-                          className="flex items-center justify-between rounded-2xl border border-border bg-background/50 px-3 py-3"
-                        >
-                          <div className="flex items-center gap-3">
-                            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-sky-400/30 to-indigo-500/20" />
-                            <div>
-                              <div className="text-sm font-medium">
-                                {tab.value === "projects"
-                                  ? `${t("preview.workspaceLabel")} ${index + 1}`
-                                  : tab.value === "commands"
-                                    ? `${t("preview.commandLabel")} ${index + 1}`
-                                    : `${t("preview.processLabel")} ${index + 1}`}
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                {tab.value === "runtime" ? t("preview.itemStreaming") : t("preview.itemReady")}
-                              </div>
-                            </div>
-                          </div>
-                          <CheckCircle2 className="h-4 w-4 shrink-0 text-success" />
-                        </div>
-                      ))}
-                    </div>
-                  </TiltCard>
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
+          <ScrollReveal delay={0.06}>
+            <TiltCard className="glass-panel overflow-hidden rounded-[2rem] p-3 sm:p-4">
+              <img
+                src={PREVIEW_SCREENSHOT_SRC}
+                alt={t("preview.imageAlt")}
+                className="w-full rounded-[1.4rem] border border-border/70 object-cover shadow-[0_24px_80px_rgba(2,6,23,0.18)]"
+              />
+            </TiltCard>
+          </ScrollReveal>
         </section>
 
         <section className="section-shell py-8">

@@ -82,9 +82,10 @@ const en = {
   },
   preview: {
     badge: "Preview",
-    title: "Calm UI for noisy local work",
+    title: "One clean window for projects, commands, and runtime",
     description:
-      "See projects, commands, and runtime feedback in a layout that stays readable while you work.",
+      "A real Projects Runner screenshot showing workspaces, commands, and local process state in the same view.",
+    imageAlt: "Projects Runner interface screenshot",
     projectsTab: "Projects",
     commandsTab: "Commands",
     runtimeTab: "Runtime",

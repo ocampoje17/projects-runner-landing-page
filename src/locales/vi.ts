@@ -82,9 +82,10 @@ const vi = {
   },
   preview: {
     badge: "Xem trước",
-    title: "Giao diện bình tĩnh cho công việc local nhiều nhiễu",
+    title: "Một cửa sổ gọn gàng cho dự án, lệnh và runtime",
     description:
-      "Xem dự án, lệnh và trạng thái runtime trong một bố cục rõ ràng khi bạn đang làm việc.",
+      "Ảnh chụp giao diện thực tế của Projects Runner khi bạn quản lý workspace, lệnh và tiến trình local trong cùng một màn hình.",
+    imageAlt: "Ảnh chụp giao diện Projects Runner",
     projectsTab: "Dự án",
     commandsTab: "Lệnh",
     runtimeTab: "Runtime",
