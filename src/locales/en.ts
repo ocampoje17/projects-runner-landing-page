@@ -147,7 +147,7 @@ const en = {
     successTitle: "Releases opened",
     successDescription: "If nothing appeared, use the repository links below to open the releases page directly.",
     errorTitle: "Popup blocked",
-    errorDescription: "The releases page could not be opened automatically, so the current tab will navigate there instead.",
+    errorDescription: "The releases page could not be opened automatically. Please allow popups or open the releases link manually.",
   },
 } as const;
 

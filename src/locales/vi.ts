@@ -147,7 +147,7 @@ const vi = {
     successTitle: "Đã mở releases",
     successDescription: "Nếu chưa thấy trang mới, bạn có thể dùng các liên kết repository hoặc releases bên dưới.",
     errorTitle: "Popup bị chặn",
-    errorDescription: "Không thể tự động mở trang releases, nên trang hiện tại sẽ chuyển hướng tới đó.",
+    errorDescription: "Không thể tự động mở trang releases. Hãy cho phép popup hoặc mở liên kết releases thủ công.",
   },
 } as const;
 

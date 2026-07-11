@@ -175,7 +175,7 @@ function App() {
         description: t("toasts.errorDescription"),
         status: "error",
       });
-      window.location.href = RELEASES_URL;
+      window.setTimeout(() => setDownloadState("idle"), 2200);
       return;
     }
 
@@ -272,8 +272,11 @@ function App() {
         <section className="section-shell grid items-center gap-12 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
           <div className="space-y-7">
             <ScrollReveal>
-              <AnimatedBadge pulse className="border border-primary/20 bg-primary/10 text-primary" showIcon={false}>
-                <Sparkles className="h-3.5 w-3.5" />
+              <AnimatedBadge
+                pulse
+                icon={<Sparkles className="h-3.5 w-3.5" />}
+                className="border border-primary/20 bg-primary/10 text-primary"
+              >
                 {t("hero.badge")}
               </AnimatedBadge>
             </ScrollReveal>
@@ -345,8 +348,10 @@ function App() {
                     </div>
                     <div className="mt-1 text-lg font-semibold">{t("workspaceCard.title")}</div>
                   </div>
-                  <AnimatedBadge showIcon={false} className="border border-success/20 bg-success/10 text-success">
-                    <span className="h-1.5 w-1.5 rounded-full bg-success" />
+                  <AnimatedBadge
+                    icon={<span className="h-1.5 w-1.5 rounded-full bg-success" />}
+                    className="border border-success/20 bg-success/10 text-success"
+                  >
                     {t("workspaceCard.ready")}
                   </AnimatedBadge>
                 </div>
@@ -410,8 +415,10 @@ function App() {
 
         <section id="features" className="section-shell py-16 lg:py-20">
           <ScrollReveal className="mx-auto max-w-2xl text-center">
-            <AnimatedBadge showIcon={false} className="mx-auto mb-4 border border-border bg-card text-muted-foreground">
-              <Zap className="h-3.5 w-3.5 text-primary" />
+            <AnimatedBadge
+              icon={<Zap className="h-3.5 w-3.5 text-primary" />}
+              className="mx-auto mb-4 border border-border bg-card text-muted-foreground"
+            >
               {t("features.badge")}
             </AnimatedBadge>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -441,8 +448,10 @@ function App() {
           <div className="glass-panel overflow-hidden rounded-[2rem] p-6 sm:p-8 lg:p-10">
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <ScrollReveal>
-                <AnimatedBadge showIcon={false} className="mb-4 border border-border bg-background/50 text-muted-foreground">
-                  <Layers3 className="h-3.5 w-3.5 text-primary" />
+                <AnimatedBadge
+                  icon={<Layers3 className="h-3.5 w-3.5 text-primary" />}
+                  className="mb-4 border border-border bg-background/50 text-muted-foreground"
+                >
                   {t("workflow.badge")}
                 </AnimatedBadge>
                 <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -476,8 +485,10 @@ function App() {
 
         <section id="preview" className="section-shell py-16 lg:py-20">
           <ScrollReveal className="mb-8 max-w-2xl">
-            <AnimatedBadge showIcon={false} className="mb-4 border border-border bg-card text-muted-foreground">
-              <MonitorSmartphone className="h-3.5 w-3.5 text-primary" />
+            <AnimatedBadge
+              icon={<MonitorSmartphone className="h-3.5 w-3.5 text-primary" />}
+              className="mb-4 border border-border bg-card text-muted-foreground"
+            >
               {t("preview.badge")}
             </AnimatedBadge>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -524,8 +535,10 @@ function App() {
                   <TiltCard className="glass-panel rounded-[1.75rem] p-5">
                     <div className="mb-4 flex items-center justify-between gap-3">
                       <div className="text-sm font-medium">{tab.label}</div>
-                      <AnimatedBadge showIcon={false} className="border border-primary/20 bg-primary/10 text-primary">
-                        <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                      <AnimatedBadge
+                        icon={<span className="h-1.5 w-1.5 rounded-full bg-current" />}
+                        className="border border-primary/20 bg-primary/10 text-primary"
+                      >
                         {t("workspaceCard.ready")}
                       </AnimatedBadge>
                     </div>
