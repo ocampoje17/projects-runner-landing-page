@@ -98,7 +98,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         transition={SPRING_PRESS}
         onPointerDown={handlePointerDown}
         className={cn(
-          "inline-flex items-center justify-center font-medium select-none",
+          "inline-flex items-center justify-center whitespace-nowrap font-medium select-none [&_svg]:shrink-0",
           "transition-colors",
           "disabled:pointer-events-none disabled:opacity-50",
           ripple && "relative overflow-hidden",

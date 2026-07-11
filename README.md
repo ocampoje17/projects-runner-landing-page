@@ -1,11 +1,11 @@
 # Projects Runner Landing Page
 
-Marketing site for **Projects Runner**, a desktop command launcher for developers.
+Landing page for **Projects Runner**, with full Vietnamese and English copy plus a direct release-page download flow.
 
 - Stack: Vite + React + TypeScript + Tailwind CSS v4
-- Motion UI: [beUI v2](https://github.com/starc007/ui-components)
+- i18n: `i18next`, `react-i18next`, `i18next-browser-languagedetector`
 - Domain: [projects-runner.laychu.com](https://projects-runner.laychu.com)
-- Repo: [ocampoje17/projects-runner-landing-page](https://github.com/ocampoje17/projects-runner-landing-page)
+- App repo: [ocampoje17/projects-runner-app](https://github.com/ocampoje17/projects-runner-app)
 
 ## Develop
 
@@ -20,16 +20,6 @@ npm run dev
 npm run build
 npm run preview
 ```
-
-## beUI components used
-
-Installed from the beUI registry (`https://beui.dev/r/{name}.json`):
-
-- `button-base`, `button-stateful`, `button-magnetic`
-- `animated-badge`, `animated-toast-stack`
-- `tabs`, `tilt-card`, `marquee`
-- `text-reveal`, `text-shimmer`, `number-ticker`
-- `scroll-reveal`, `shared-layout-bg`, `theme-toggle`, `tooltip`
 
 ## GitHub Pages
 
