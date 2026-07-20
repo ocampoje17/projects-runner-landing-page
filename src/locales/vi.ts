@@ -19,9 +19,6 @@ const vi = {
     description:
       "Projects Runner giúp bạn lưu lệnh theo từng dự án, sắp xếp gọn theo workspace và chạy nhanh hơn các quy trình local hằng ngày.",
     download: "Mở trang phát hành",
-    downloadLoading: "Đang mở releases",
-    downloadSuccess: "Đã mở releases",
-    downloadError: "Mở thủ công",
     explore: "Xem tính năng",
   },
   metrics: {
@@ -142,13 +139,12 @@ const vi = {
     email: "namqhong@gmail.com",
     telegram: "@namhnz",
   },
-  toasts: {
-    openingTitle: "Đang mở releases",
-    openingDescription: "Đang chuyển bạn tới trang phát hành mới nhất của Projects Runner.",
-    successTitle: "Đã mở releases",
-    successDescription: "Nếu chưa thấy trang mới, bạn có thể dùng các liên kết repository hoặc releases bên dưới.",
-    errorTitle: "Popup bị chặn",
-    errorDescription: "Không thể tự động mở trang releases. Hãy cho phép popup hoặc mở liên kết releases thủ công.",
+  analyticsConsent: {
+    title: "Cho phép dùng Analytics?",
+    description:
+      "Chúng tôi dùng Google Analytics để hiểu cách trang được sử dụng và cải thiện trải nghiệm. Analytics chỉ được bật khi bạn đồng ý.",
+    accept: "Bật Analytics",
+    decline: "Không, cảm ơn",
   },
 } as const;
 

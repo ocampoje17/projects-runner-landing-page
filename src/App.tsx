@@ -1,6 +1,5 @@
 import {
   ArrowRight,
-  Download,
   FolderKanban,
   Github,
   Keyboard,
@@ -18,14 +17,10 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { AnalyticsConsentDialog } from "@/components/analytics-consent-dialog";
 import { AnimatedBadge } from "@/components/motion/animated-badge";
-import {
-  AnimatedToastStack,
-  useAnimatedToastStack,
-} from "@/components/motion/animated-toast-stack";
 import { Button } from "@/components/motion/button/base";
 import { MagneticButton } from "@/components/motion/button/magnetic";
-import { StatefulButton } from "@/components/motion/button/stateful";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { SharedLayoutBg } from "@/components/motion/shared-layout-bg";
 import { TextReveal } from "@/components/motion/text-reveal";
@@ -33,6 +28,12 @@ import { TextShimmer } from "@/components/motion/text-shimmer";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { Tooltip } from "@/components/motion/tooltip";
+import {
+  enableGoogleAnalytics,
+  readAnalyticsConsent,
+  saveAnalyticsConsent,
+  type AnalyticsConsent,
+} from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const REPOSITORY_URL = "https://github.com/ocampoje17/projects-runner-app";
@@ -40,20 +41,24 @@ const RELEASES_URL = "https://github.com/ocampoje17/projects-runner-app/releases
 const EMAIL_URL = "mailto:namqhong@gmail.com";
 const TELEGRAM_URL = "https://t.me/namhnz";
 const PREVIEW_SCREENSHOT_SRC = "/preview-screenshot-1.jpg";
+const RELEASE_LINK_CLASS =
+  "inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 function App() {
   const { t, i18n } = useTranslation();
-  const [downloadState, setDownloadState] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const { toasts, showToast, dismissToast } = useAnimatedToastStack({
-    limit: 3,
-    defaultDuration: 4200,
-  });
+  const [analyticsConsent, setAnalyticsConsent] = useState<AnalyticsConsent | null>(() => readAnalyticsConsent());
 
   const language = i18n.resolvedLanguage === "en" ? "en" : "vi";
 
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
+
+  useEffect(() => {
+    if (analyticsConsent === "granted") {
+      enableGoogleAnalytics();
+    }
+  }, [analyticsConsent]);
 
   const navItems = [
     { href: "#features", label: t("nav.features") },
@@ -129,39 +134,13 @@ function App() {
     },
   ];
 
-  const handleDownload = () => {
-    if (downloadState === "loading") return;
-
-    setDownloadState("loading");
-    showToast({
-      title: t("toasts.openingTitle"),
-      description: t("toasts.openingDescription"),
-      status: "loading",
-    });
-
-    const openedWindow = window.open(RELEASES_URL, "_blank", "noopener,noreferrer");
-    if (!openedWindow) {
-      setDownloadState("error");
-      showToast({
-        title: t("toasts.errorTitle"),
-        description: t("toasts.errorDescription"),
-        status: "error",
-      });
-      window.setTimeout(() => setDownloadState("idle"), 2200);
-      return;
-    }
-
-    setDownloadState("success");
-    showToast({
-      title: t("toasts.successTitle"),
-      description: t("toasts.successDescription"),
-      status: "success",
-    });
-    window.setTimeout(() => setDownloadState("idle"), 1800);
-  };
-
   const openRepository = () => {
     window.open(REPOSITORY_URL, "_blank", "noopener,noreferrer");
+  };
+
+  const handleAnalyticsDecision = (consent: AnalyticsConsent) => {
+    saveAnalyticsConsent(consent);
+    setAnalyticsConsent(consent);
   };
 
   const switchLanguage = (nextLanguage: "vi" | "en") => {
@@ -269,18 +248,14 @@ function App() {
             </div>
 
             <ScrollReveal delay={0.12} className="flex flex-wrap items-center gap-3">
-              <StatefulButton
-                state={downloadState}
-                onClick={handleDownload}
-                size="lg"
-                ripple
-                icon={<Download className="h-4 w-4" />}
-                loadingText={t("hero.downloadLoading")}
-                successText={t("hero.downloadSuccess")}
-                errorText={t("hero.downloadError")}
+              <a
+                href={RELEASES_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={RELEASE_LINK_CLASS}
               >
                 {t("hero.download")}
-              </StatefulButton>
+              </a>
               <MagneticButton
                 variant="secondary"
                 size="lg"
@@ -479,17 +454,14 @@ function App() {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3 lg:justify-end">
-                  <StatefulButton
-                    state={downloadState}
-                    onClick={handleDownload}
-                    size="lg"
-                    icon={<Download className="h-4 w-4" />}
-                    loadingText={t("hero.downloadLoading")}
-                    successText={t("hero.downloadSuccess")}
-                    errorText={t("hero.downloadError")}
+                  <a
+                    href={RELEASES_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={RELEASE_LINK_CLASS}
                   >
                     {t("cta.download")}
-                  </StatefulButton>
+                  </a>
                   <Button variant="secondary" size="lg" onClick={openRepository}>
                     <Github className="h-4 w-4" />
                     {t("cta.source")}
@@ -554,11 +526,7 @@ function App() {
         </div>
       </footer>
 
-      <AnimatedToastStack
-        toasts={toasts}
-        onDismiss={dismissToast}
-        position="bottom-right"
-      />
+      {analyticsConsent === null ? <AnalyticsConsentDialog onDecision={handleAnalyticsDecision} /> : null}
     </div>
   );
 }

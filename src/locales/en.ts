@@ -19,9 +19,6 @@ const en = {
     description:
       "Projects Runner helps you save project commands, organize them by workspace, and launch your daily local workflows faster.",
     download: "Open releases",
-    downloadLoading: "Opening releases",
-    downloadSuccess: "Releases opened",
-    downloadError: "Open manually",
     explore: "See features",
   },
   metrics: {
@@ -142,13 +139,12 @@ const en = {
     email: "namqhong@gmail.com",
     telegram: "@namhnz",
   },
-  toasts: {
-    openingTitle: "Opening releases",
-    openingDescription: "Redirecting you to the latest Projects Runner release page.",
-    successTitle: "Releases opened",
-    successDescription: "If nothing appeared, use the repository links below to open the releases page directly.",
-    errorTitle: "Popup blocked",
-    errorDescription: "The releases page could not be opened automatically. Please allow popups or open the releases link manually.",
+  analyticsConsent: {
+    title: "Allow Analytics?",
+    description:
+      "We use Google Analytics to understand how the site is used and improve the experience. Analytics is enabled only when you agree.",
+    accept: "Allow Analytics",
+    decline: "No, thanks",
   },
 } as const;
 
