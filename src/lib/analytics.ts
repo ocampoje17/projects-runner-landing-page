@@ -5,12 +5,13 @@ export type AnalyticsConsent = "granted" | "denied";
 
 declare global {
   interface Window {
-    dataLayer?: unknown[][];
+    dataLayer?: IArguments[];
     gtag?: (...args: unknown[]) => void;
   }
 }
 
 let analyticsInitialized = false;
+let analyticsLoading = false;
 
 export function readAnalyticsConsent(): AnalyticsConsent | null {
   try {
@@ -30,17 +31,39 @@ export function saveAnalyticsConsent(consent: AnalyticsConsent): void {
 }
 
 export function enableGoogleAnalytics(): void {
-  if (analyticsInitialized) return;
+  if (analyticsInitialized || analyticsLoading) return;
 
-  analyticsInitialized = true;
+  analyticsLoading = true;
   window.dataLayer ??= [];
-  window.gtag ??= (...args: unknown[]) => window.dataLayer?.push(args);
-  window.gtag("js", new Date());
-  window.gtag("config", ANALYTICS_MEASUREMENT_ID);
+  window.gtag ??= function gtag() {
+    window.dataLayer?.push(arguments);
+  };
 
   const script = document.createElement("script");
   script.id = "google-analytics-tag";
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_MEASUREMENT_ID}`;
+  script.addEventListener(
+    "load",
+    () => {
+      analyticsInitialized = true;
+      analyticsLoading = false;
+      window.gtag?.("js", new Date());
+      window.gtag?.("config", ANALYTICS_MEASUREMENT_ID, { send_page_view: false });
+      window.gtag?.("event", "page_view", {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: `${window.location.pathname}${window.location.search}`,
+      });
+    },
+    { once: true },
+  );
+  script.addEventListener(
+    "error",
+    () => {
+      analyticsLoading = false;
+    },
+    { once: true },
+  );
   document.head.append(script);
 }
