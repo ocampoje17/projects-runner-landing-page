@@ -23,6 +23,7 @@ import { Button } from "@/components/motion/button/base";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { SharedLayoutBg } from "@/components/motion/shared-layout-bg";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/motion/tabs";
 import { TextReveal } from "@/components/motion/text-reveal";
 import { TextShimmer } from "@/components/motion/text-shimmer";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
@@ -40,7 +41,6 @@ const REPOSITORY_URL = "https://github.com/ocampoje17/projects-runner-app";
 const RELEASES_URL = "https://github.com/ocampoje17/projects-runner-app/releases";
 const EMAIL_URL = "mailto:namqhong@gmail.com";
 const TELEGRAM_URL = "https://t.me/namhnz";
-const PREVIEW_SCREENSHOT_SRC = "/preview-screenshot-1.jpg";
 const RELEASE_LINK_CLASS =
   "inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
@@ -430,13 +430,51 @@ function App() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.06}>
-            <TiltCard className="glass-panel overflow-hidden rounded-[2rem] p-3 sm:p-4">
-              <img
-                src={PREVIEW_SCREENSHOT_SRC}
-                alt={t("preview.imageAlt")}
-                className="w-full rounded-[1.4rem] border border-border/70 object-cover shadow-[0_24px_80px_rgba(2,6,23,0.18)]"
-              />
-            </TiltCard>
+            <Tabs defaultValue="overview" className="w-full">
+              <div className="mb-6 flex justify-center">
+                <TabsList className="glass-panel flex-wrap justify-center border border-border/70 p-1.5 shadow-sm">
+                  <TabsTrigger value="overview">
+                    {t("preview.tabOverview")}
+                  </TabsTrigger>
+                  <TabsTrigger value="storage">
+                    {t("preview.tabStorage")}
+                  </TabsTrigger>
+                  <TabsTrigger value="clean">
+                    {t("preview.tabCleanCache")}
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+
+              <TabsContent value="overview">
+                <TiltCard className="glass-panel overflow-hidden rounded-[2rem] p-3 sm:p-4">
+                  <img
+                    src="/screenshot-new.jpg"
+                    alt={t("preview.overviewAlt")}
+                    className="w-full rounded-[1.4rem] border border-border/70 object-cover shadow-[0_24px_80px_rgba(2,6,23,0.18)]"
+                  />
+                </TiltCard>
+              </TabsContent>
+
+              <TabsContent value="storage">
+                <TiltCard className="glass-panel overflow-hidden rounded-[2rem] p-3 sm:p-4">
+                  <img
+                    src="/thanh-dung-luong.jpg"
+                    alt={t("preview.storageAlt")}
+                    className="w-full rounded-[1.4rem] border border-border/70 object-cover shadow-[0_24px_80px_rgba(2,6,23,0.18)]"
+                  />
+                </TiltCard>
+              </TabsContent>
+
+              <TabsContent value="clean">
+                <TiltCard className="glass-panel overflow-hidden rounded-[2rem] p-3 sm:p-4">
+                  <img
+                    src="/clean-temp.jpg"
+                    alt={t("preview.cleanCacheAlt")}
+                    className="w-full rounded-[1.4rem] border border-border/70 object-cover shadow-[0_24px_80px_rgba(2,6,23,0.18)]"
+                  />
+                </TiltCard>
+              </TabsContent>
+            </Tabs>
           </ScrollReveal>
         </section>
 
