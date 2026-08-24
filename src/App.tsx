@@ -1,17 +1,28 @@
 import {
   ArrowRight,
+  Check,
+  ChevronDown,
+  ChevronRight,
+  FileCode,
+  Folder,
   FolderKanban,
+  FolderOpen,
+  GitBranch,
   Github,
   Keyboard,
   Layers3,
   Mail,
   MonitorSmartphone,
   Play,
+  RotateCcw,
+  Search,
   Send,
   Settings2,
   ShieldCheck,
   Sparkles,
+  Square,
   TerminalSquare,
+  WandSparkles,
   Workflow,
   Zap,
 } from "lucide-react";
@@ -20,15 +31,8 @@ import { useTranslation } from "react-i18next";
 import { AnalyticsConsentDialog } from "@/components/analytics-consent-dialog";
 import { AnimatedBadge } from "@/components/motion/animated-badge";
 import { Button } from "@/components/motion/button/base";
-import { MagneticButton } from "@/components/motion/button/magnetic";
-import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { SharedLayoutBg } from "@/components/motion/shared-layout-bg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/motion/tabs";
-import { TextReveal } from "@/components/motion/text-reveal";
-import { TextShimmer } from "@/components/motion/text-shimmer";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
-import { TiltCard } from "@/components/motion/tilt-card";
-import { Tooltip } from "@/components/motion/tooltip";
 import {
   enableGoogleAnalytics,
   readAnalyticsConsent,
@@ -42,11 +46,14 @@ const RELEASES_URL = "https://github.com/ocampoje17/projects-runner-app/releases
 const EMAIL_URL = "mailto:namqhong@gmail.com";
 const TELEGRAM_URL = "https://t.me/namhnz";
 const RELEASE_LINK_CLASS =
-  "inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "inline-flex h-9 items-center justify-center gap-2 rounded-md bg-primary px-4 text-xs font-medium text-primary-foreground shadow-none transition-colors hover:bg-[#1692e8] active:bg-[#0062a3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background";
 
 function App() {
   const { t, i18n } = useTranslation();
   const [analyticsConsent, setAnalyticsConsent] = useState<AnalyticsConsent | null>(() => readAnalyticsConsent());
+  const [previewTab, setPreviewTab] = useState("overview");
+  const [heroDevRunning, setHeroDevRunning] = useState(true);
+  const [heroActiveProject, setHeroActiveProject] = useState<"projects-runner" | "api-server" | "docs-site">("projects-runner");
 
   const language = i18n.resolvedLanguage === "en" ? "en" : "vi";
 
@@ -148,44 +155,50 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden text-foreground">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.16),transparent_55%)]" />
-
-      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/70 backdrop-blur-xl">
-        <div className="section-shell flex h-16 items-center justify-between gap-4">
-          <a href="#top" className="flex items-center gap-3">
+    <div className="relative min-h-screen overflow-x-hidden text-foreground bg-[var(--background)]">
+      {/* VS Code Titlebar / Navigation Header */}
+      <header className="sticky top-0 z-40 border-b border-border bg-[var(--vscode-activity,#181818)]">
+        <div className="section-shell flex h-11 items-center justify-between gap-4">
+          <a href="#top" className="flex items-center gap-2.5 transition-opacity hover:opacity-90">
+            {/* Window control dots */}
+            <div className="hidden items-center gap-1.5 sm:flex">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+            </div>
+            <div className="hidden h-4 w-px bg-border sm:block" />
             <img
               src="/app-icon.png"
               alt="Projects Runner"
-              className="h-9 w-9 rounded-xl border border-border object-cover shadow-[0_0_0_1px_rgba(56,189,248,0.15)]"
+              className="h-5 w-5 rounded-[3px] border border-border/60 object-cover"
             />
-            <div>
-              <div className="text-sm font-semibold tracking-tight">Projects Runner</div>
-              <div className="text-[11px] text-muted-foreground">{t("header.tagline")}</div>
+            <div className="flex items-baseline gap-2">
+              <div className="text-xs font-semibold tracking-tight text-foreground">Projects Runner</div>
+              <div className="hidden font-mono text-[11px] text-muted-foreground md:inline">
+                {t("header.tagline")}
+              </div>
             </div>
           </a>
 
-          <nav className="hidden items-center gap-1 md:flex">
-            <SharedLayoutBg
-              className="flex w-auto flex-row items-center gap-1 rounded-full border border-border/70 bg-card/50 p-1"
-              pillClassName="rounded-full bg-primary/12"
-              inset={4}
-            >
+          {/* VS Code Command Center Navigation */}
+          <nav className="hidden items-center md:flex">
+            <div className="flex items-center gap-1 rounded-md border border-border bg-[var(--vscode-editor,#1e1e1e)] px-1 py-0.5 shadow-sm">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="relative z-10 rounded-full px-3.5 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="rounded px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:bg-[var(--vscode-list-hover,rgba(255,255,255,0.06))] hover:text-foreground"
                 >
                   {item.label}
                 </a>
               ))}
-            </SharedLayoutBg>
+            </div>
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
+            {/* Language Switcher */}
             <div
-              className="inline-flex items-center gap-1 rounded-full border border-border bg-card/70 p-1"
+              className="inline-flex items-center gap-0.5 rounded-md border border-border bg-[var(--vscode-editor,#1e1e1e)] p-0.5"
               aria-label={t("footer.languageToggle")}
             >
               {(["vi", "en"] as const).map((locale) => (
@@ -196,7 +209,7 @@ function App() {
                   aria-pressed={language === locale}
                   title={locale === "vi" ? "Tiếng Việt" : "English"}
                   className={cn(
-                    "rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition-colors",
+                    "rounded px-2 py-0.5 font-mono text-[11px] font-semibold uppercase tracking-wider transition-colors cursor-pointer",
                     language === locale
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground",
@@ -206,13 +219,15 @@ function App() {
                 </button>
               ))}
             </div>
+
+            {/* Theme Toggle */}
             <ThemeToggle
-              variant="circle"
-              start="top-right"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground"
+              className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border bg-[var(--vscode-editor,#1e1e1e)] text-foreground hover:bg-muted"
             />
-            <Button variant="secondary" size="sm" className="hidden sm:inline-flex" onClick={openRepository}>
-              <Github className="h-4 w-4" />
+
+            {/* GitHub Button */}
+            <Button variant="secondary" size="sm" className="hidden rounded-md sm:inline-flex" onClick={openRepository}>
+              <Github className="h-3.5 w-3.5" />
               {t("header.github")}
             </Button>
           </div>
@@ -220,34 +235,26 @@ function App() {
       </header>
 
       <main id="top">
-        <section className="section-shell grid items-center gap-12 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
-          <div className="space-y-7">
-            <ScrollReveal>
-              <AnimatedBadge
-                pulse
-                icon={<Sparkles className="h-3.5 w-3.5" />}
-                className="border border-primary/20 bg-primary/10 text-primary"
-              >
-                {t("hero.badge")}
-              </AnimatedBadge>
-            </ScrollReveal>
+        {/* HERO SECTION */}
+        <section className="section-shell grid items-center gap-10 pb-14 pt-10 lg:grid-cols-[1.02fr_0.98fr] lg:pb-18 lg:pt-14">
+          <div className="space-y-5">
+            <AnimatedBadge
+              icon={<Sparkles className="h-3 w-3" />}
+              className="rounded-md border border-primary/30 bg-primary/10 font-mono text-xs text-primary"
+            >
+              {t("hero.badge")}
+            </AnimatedBadge>
 
-            <div className="space-y-4">
-              <TextReveal
-                as="h1"
-                text={t("hero.title")}
-                className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]"
-                whileInView
-                split="word"
-              />
-              <ScrollReveal delay={0.08}>
-                <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                  {t("hero.description")}
-                </p>
-              </ScrollReveal>
+            <div className="space-y-3">
+              <h1 className="max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+                {t("hero.title")}
+              </h1>
+              <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {t("hero.description")}
+              </p>
             </div>
 
-            <ScrollReveal delay={0.12} className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5 pt-1">
               <a
                 href={RELEASES_URL}
                 target="_blank"
@@ -256,310 +263,598 @@ function App() {
               >
                 {t("hero.download")}
               </a>
-              <MagneticButton
+              <Button
                 variant="secondary"
-                size="lg"
+                size="md"
+                className="rounded-md"
                 onClick={() => document.querySelector("#features")?.scrollIntoView({ behavior: "smooth" })}
               >
                 {t("hero.explore")}
-                <ArrowRight className="h-4 w-4" />
-              </MagneticButton>
-            </ScrollReveal>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Button>
+            </div>
           </div>
 
-          <ScrollReveal delay={0.1}>
-            <TiltCard className="glass-panel relative overflow-hidden rounded-[1.75rem] p-4 sm:p-5">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.18),transparent_40%)]" />
-              <div className="relative space-y-4">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                      {t("workspaceCard.eyebrow")}
-                    </div>
-                    <div className="mt-1 text-lg font-semibold">{t("workspaceCard.title")}</div>
-                  </div>
-                  <AnimatedBadge
-                    icon={<span className="h-1.5 w-1.5 rounded-full bg-success" />}
-                    className="border border-success/20 bg-success/10 text-success"
+          {/* Interactive Realistic VS Code Window Mockup */}
+          <div className="vscode-editor-frame flex flex-col rounded-lg border border-border bg-[var(--vscode-editor,#1e1e1e)] p-0 shadow-2xl overflow-hidden">
+            {/* Mockup Titlebar */}
+            <div className="flex h-8 items-center justify-between border-b border-border bg-[var(--vscode-activity,#181818)] px-3 text-xs text-muted-foreground select-none">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+                </div>
+                <div className="hidden sm:flex items-center gap-1.5 rounded border border-border/80 bg-[var(--vscode-editor,#1e1e1e)] px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                  <Search className="h-2.5 w-2.5" />
+                  <span>projects-runner · Quick Open</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <AnimatedBadge
+                  icon={<span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />}
+                  className="h-5 rounded-[3px] border border-emerald-500/30 bg-emerald-500/10 px-1.5 font-mono text-[10px] text-emerald-400"
+                >
+                  {t("workspaceCard.ready")}
+                </AnimatedBadge>
+              </div>
+            </div>
+
+            {/* Main 3-Pane Body: Activity Bar + Sidebar (Projects Tree) + Editor Area */}
+            <div className="flex flex-1 min-h-[350px] text-xs">
+              {/* 1. Leftmost Activity Bar */}
+              <div className="w-9 shrink-0 border-r border-border bg-[var(--vscode-activity,#181818)] flex flex-col items-center justify-between py-2 text-muted-foreground select-none">
+                <div className="flex flex-col items-center gap-3">
+                  <button className="relative flex h-6 w-6 items-center justify-center rounded text-primary" title="Explorer">
+                    <span className="absolute left-0 top-0.5 bottom-0.5 w-0.5 bg-primary rounded-r" />
+                    <FolderKanban className="h-3.5 w-3.5" />
+                  </button>
+                  <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="Flows">
+                    <Workflow className="h-3.5 w-3.5" />
+                  </button>
+                  <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="Dev Tools">
+                    <WandSparkles className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="Settings">
+                    <Settings2 className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* 2. Sidebar - Projects Explorer Tree */}
+              <div className="hidden sm:flex w-40 shrink-0 flex-col border-r border-border bg-[var(--vscode-sidebar,#252526)] select-none">
+                {/* Sidebar Section Header */}
+                <div className="flex items-center justify-between px-2 py-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border/40 font-mono">
+                  <span>PROJECTS</span>
+                  <span className="text-[9px] px-1 bg-primary/20 text-primary rounded">3</span>
+                </div>
+
+                {/* Project Tree Items */}
+                <div className="p-1 space-y-0.5 text-[11px] font-mono">
+                  {/* projects-runner Project */}
+                  <div
+                    onClick={() => setHeroActiveProject("projects-runner")}
+                    className={cn(
+                      "rounded px-1.5 py-1 cursor-pointer transition-colors",
+                      heroActiveProject === "projects-runner"
+                        ? "bg-[var(--vscode-list-active,#094771)]/50 text-foreground"
+                        : "text-muted-foreground hover:bg-foreground/[0.04] hover:text-foreground",
+                    )}
                   >
-                    {t("workspaceCard.ready")}
-                  </AnimatedBadge>
-                </div>
-
-                <div className="grid gap-3">
-                  {[
-                    { name: t("workspaceCard.install"), cmd: "npm install", tone: "idle" },
-                    { name: t("workspaceCard.dev"), cmd: "npm run dev", tone: "running" },
-                    { name: t("workspaceCard.typecheck"), cmd: "npm run build", tone: "success" },
-                  ].map((row) => (
-                    <div
-                      key={row.name}
-                      className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-background/50 px-3 py-3"
-                    >
-                      <div>
-                        <div className="text-sm font-medium">{row.name}</div>
-                        <div className="font-mono text-xs text-muted-foreground">{row.cmd}</div>
+                    <div className="flex items-center gap-1">
+                      <ChevronDown className="h-3 w-3 text-muted-foreground" />
+                      <FolderOpen className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                      <span className="font-semibold text-[11px] truncate">projects-runner</span>
+                    </div>
+                    {/* Sub commands */}
+                    <div className="ml-3.5 mt-1 space-y-1 border-l border-border/60 pl-1.5 text-[10px]">
+                      <div className={cn("flex items-center justify-between", heroDevRunning ? "text-emerald-400 font-medium" : "text-muted-foreground")}>
+                        <span className="flex items-center gap-1">
+                          <span className={cn("h-1.5 w-1.5 rounded-full", heroDevRunning ? "bg-emerald-400 animate-pulse" : "bg-muted-foreground/50")} />
+                          dev
+                        </span>
+                        {heroDevRunning ? <span className="text-[9px] text-muted-foreground">:6810</span> : null}
                       </div>
-                      <Tooltip content={row.tone === "running" ? t("workspaceCard.stopProcess") : t("workspaceCard.runCommand")}>
-                        <Button
-                          size="icon"
-                          variant={row.tone === "running" ? "primary" : "secondary"}
-                          className={cn(
-                            "h-9 w-9",
-                            row.tone === "running" && "bg-success text-background hover:bg-success/90",
-                          )}
-                        >
-                          {row.tone === "running" ? (
-                            <span className="h-2.5 w-2.5 rounded-[3px] bg-current" />
-                          ) : (
-                            <Play className="h-4 w-4" />
-                          )}
-                        </Button>
-                      </Tooltip>
+                      <div className="flex items-center gap-1 text-muted-foreground hover:text-foreground">
+                        <TerminalSquare className="h-2.5 w-2.5" />
+                        build
+                      </div>
+                      <div className="flex items-center gap-1 text-muted-foreground hover:text-foreground">
+                        <TerminalSquare className="h-2.5 w-2.5" />
+                        lint
+                      </div>
                     </div>
-                  ))}
+                  </div>
+
+                  {/* api-server Project */}
+                  <div
+                    onClick={() => setHeroActiveProject("api-server")}
+                    className={cn(
+                      "flex items-center gap-1 px-1.5 py-1 rounded cursor-pointer transition-colors",
+                      heroActiveProject === "api-server"
+                        ? "bg-[var(--vscode-list-active,#094771)]/50 text-foreground"
+                        : "text-muted-foreground hover:bg-foreground/[0.04] hover:text-foreground",
+                    )}
+                  >
+                    <ChevronRight className="h-3 w-3" />
+                    <Folder className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                    <span className="truncate">api-server</span>
+                  </div>
+
+                  {/* docs-site Project */}
+                  <div
+                    onClick={() => setHeroActiveProject("docs-site")}
+                    className={cn(
+                      "flex items-center gap-1 px-1.5 py-1 rounded cursor-pointer transition-colors",
+                      heroActiveProject === "docs-site"
+                        ? "bg-[var(--vscode-list-active,#094771)]/50 text-foreground"
+                        : "text-muted-foreground hover:bg-foreground/[0.04] hover:text-foreground",
+                    )}
+                  >
+                    <ChevronRight className="h-3 w-3" />
+                    <Folder className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                    <span className="truncate">docs-site</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Main Workspace Area: Editor Tab + Project Runtime Controls + Terminal */}
+              <div className="flex-1 flex flex-col min-w-0 bg-[var(--vscode-editor,#1e1e1e)]">
+                {/* Editor Tabs Bar */}
+                <div className="flex items-center justify-between border-b border-border bg-[var(--vscode-tab-inactive,#2d2d30)]">
+                  <div className="flex items-stretch overflow-x-auto">
+                    <div className="flex items-center gap-2 border-r border-border border-t-2 border-t-primary bg-[var(--vscode-tab-active,#1e1e1e)] px-3 py-1 text-xs font-medium text-foreground">
+                      <FolderKanban className="h-3.5 w-3.5 text-primary" />
+                      <span>{heroActiveProject}</span>
+                    </div>
+                    <div className="flex items-center gap-2 border-r border-border border-t-2 border-t-transparent px-3 py-1 text-xs text-muted-foreground hover:text-foreground">
+                      <FileCode className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="hidden md:inline">package.json</span>
+                    </div>
+                  </div>
+                  <div className="hidden pr-2 font-mono text-[10px] text-muted-foreground md:inline">
+                    node v20.18.0
+                  </div>
                 </div>
 
-                <div className="rounded-2xl border border-border bg-[#071018] p-4 font-mono text-xs text-slate-300 shadow-inner">
-                  <div className="mb-2 flex items-center gap-2 text-[11px] text-slate-500">
-                    <TerminalSquare className="h-3.5 w-3.5" />
-                    {t("workspaceCard.terminal")} · {t("workspaceCard.title")}
-                  </div>
-                  <div className="space-y-1">
-                    <div>
-                      <span className="text-sky-400">$</span> npm run dev
+                {/* Project Header Banner */}
+                <div className="p-2.5 border-b border-border/60 bg-[var(--vscode-editor,#1e1e1e)] flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="h-6 w-6 rounded bg-gradient-to-br from-primary to-sky-600 flex items-center justify-center font-mono text-[11px] font-bold text-white shadow-sm shrink-0">
+                      PR
                     </div>
-                    <div className="text-emerald-400">VITE ready in 214 ms</div>
-                    <div className="text-slate-400">Local: http://localhost:6810/</div>
-                    <div className="text-sky-300">
-                      <TextShimmer className="bg-[linear-gradient(110deg,#64748b_30%,#e2e8f0_50%,#64748b_70%)]">
-                        {t("workspaceCard.watching")}
-                      </TextShimmer>
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-semibold text-xs text-foreground">{heroActiveProject}-app</span>
+                        <span className="rounded bg-primary/15 px-1 py-0.1 font-mono text-[9px] text-primary">v1.0.0</span>
+                      </div>
+                      <div className="font-mono text-[10px] text-muted-foreground flex items-center gap-2">
+                        <span>~/DEV/{heroActiveProject}</span>
+                        <span className="hidden sm:inline text-border">|</span>
+                        <span className="hidden sm:flex items-center gap-0.5 text-emerald-400">
+                          <GitBranch className="h-2.5 w-2.5" /> main
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => setHeroDevRunning((prev) => !prev)}
+                      className="inline-flex items-center gap-1 rounded bg-primary/15 border border-primary/40 px-2 py-0.5 font-mono text-[10px] text-primary hover:bg-primary/25 cursor-pointer"
+                    >
+                      <Play className="h-2.5 w-2.5 fill-current" />
+                      {heroDevRunning ? "Restart All" : "Run All"}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Command Runtime Grid */}
+                <div className="p-2.5 space-y-2 flex-1">
+                  {/* Command 1: dev */}
+                  <div className={cn(
+                    "flex items-center justify-between gap-2 rounded-md border p-2 transition-colors",
+                    heroDevRunning ? "border-emerald-500/30 bg-[var(--vscode-sidebar,#252526)]" : "border-border bg-[var(--vscode-sidebar,#252526)]",
+                  )}>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-mono text-xs font-semibold text-foreground">dev</span>
+                        {heroDevRunning ? (
+                          <span className="inline-flex items-center gap-1 rounded bg-emerald-500/15 px-1.5 py-0.2 font-mono text-[10px] text-emerald-400">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            running :6810
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 rounded bg-card border border-border px-1.5 py-0.2 font-mono text-[10px] text-muted-foreground">
+                            stopped
+                          </span>
+                        )}
+                      </div>
+                      <div className="font-mono text-[10px] text-muted-foreground truncate">npm run dev -- --host</div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      {heroDevRunning ? (
+                        <>
+                          <button
+                            title="Restart"
+                            onClick={() => setHeroDevRunning(true)}
+                            className="h-6 w-6 inline-flex items-center justify-center rounded border border-border bg-card text-muted-foreground hover:text-foreground cursor-pointer"
+                          >
+                            <RotateCcw className="h-2.5 w-2.5" />
+                          </button>
+                          <button
+                            title="Stop"
+                            onClick={() => setHeroDevRunning(false)}
+                            className="h-6 w-6 inline-flex items-center justify-center rounded bg-destructive/15 text-destructive border border-destructive/30 hover:bg-destructive/25 cursor-pointer"
+                          >
+                            <Square className="h-2.5 w-2.5 fill-current" />
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          title="Run"
+                          onClick={() => setHeroDevRunning(true)}
+                          className="h-6 w-6 inline-flex items-center justify-center rounded bg-primary text-primary-foreground hover:bg-[#1692e8] cursor-pointer"
+                        >
+                          <Play className="h-2.5 w-2.5 fill-current" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Command 2: build */}
+                  <div className="flex items-center justify-between gap-2 rounded-md border border-border bg-[var(--vscode-sidebar,#252526)] p-2">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-mono text-xs font-semibold text-foreground">build</span>
+                        <span className="inline-flex items-center gap-1 rounded bg-card border border-border px-1.5 py-0.2 font-mono text-[10px] text-muted-foreground">
+                          idle · 459ms
+                        </span>
+                      </div>
+                      <div className="font-mono text-[10px] text-muted-foreground truncate">tsc -b && vite build</div>
+                    </div>
+                    <button
+                      title="Run build"
+                      className="h-6 w-6 inline-flex items-center justify-center rounded bg-primary text-primary-foreground hover:bg-[#1692e8] cursor-pointer"
+                    >
+                      <Play className="h-2.5 w-2.5 fill-current" />
+                    </button>
+                  </div>
+
+                  {/* Mini Embedded Terminal Panel */}
+                  <div className="rounded-md border border-border bg-[#0d0d0d] font-mono text-xs text-slate-300 shadow-inner overflow-hidden">
+                    {/* Terminal Tabs Header */}
+                    <div className="flex items-center justify-between border-b border-border/40 bg-[#161616] px-2.5 py-1 text-[10px] text-muted-foreground select-none">
+                      <div className="flex items-center gap-3">
+                        <span className="text-foreground font-semibold flex items-center gap-1 border-b border-primary text-primary pb-0.5">
+                          <TerminalSquare className="h-3 w-3" /> TERMINAL: dev
+                        </span>
+                        <span className="hover:text-foreground cursor-pointer">OUTPUT</span>
+                        <span className="hover:text-foreground cursor-pointer flex items-center gap-1">
+                          PORTS <span className="rounded bg-primary/30 px-1 text-[8px] text-primary">1</span>
+                        </span>
+                      </div>
+                      {heroDevRunning ? (
+                        <span className="text-[9px] text-emerald-400">● :6810</span>
+                      ) : (
+                        <span className="text-[9px] text-muted-foreground">● offline</span>
+                      )}
+                    </div>
+
+                    {/* Terminal Output Lines */}
+                    <div className="p-2.5 space-y-1 text-[10.5px]">
+                      {heroDevRunning ? (
+                        <>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-sky-400 font-bold">$</span>
+                            <span className="text-slate-200">npm run dev</span>
+                          </div>
+                          <div className="text-emerald-400">  ✓ VITE v8.1.4  ready in 214 ms</div>
+                          <div className="text-slate-300">
+                            {"  "}➜  <span className="font-bold">Local:</span>   <span className="text-sky-300 underline underline-offset-2">http://localhost:6810/</span>
+                          </div>
+                          <div className="text-slate-500">  ➜  Network: use --host to expose</div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-sky-400 font-bold">$</span>
+                            <span className="text-slate-400"># Process terminated by user</span>
+                          </div>
+                          <div className="text-amber-400">  [Process dev exited with code 0]</div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
-            </TiltCard>
-          </ScrollReveal>
+            </div>
+
+            {/* Status bar bottom strip */}
+            <div className="flex h-6 items-center justify-between border-t border-border bg-[var(--vscode-status,#007acc)] px-3 text-[10px] text-white font-mono select-none">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
+                  <GitBranch className="h-3 w-3" />
+                  <span>main*</span>
+                </div>
+                <span>{heroDevRunning ? "1 active process" : "0 active processes"}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                {heroDevRunning ? <span>Port: 6810</span> : null}
+                <span>UTF-8</span>
+                <span>TypeScript JSX</span>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section id="features" className="section-shell py-16 lg:py-20">
-          <ScrollReveal className="mx-auto max-w-2xl text-center">
+        {/* FEATURES SECTION */}
+        <section id="features" className="section-shell py-12 lg:py-16">
+          <div className="mx-auto max-w-2xl text-center">
             <AnimatedBadge
-              icon={<Zap className="h-3.5 w-3.5 text-primary" />}
-              className="mx-auto mb-4 border border-border bg-card text-muted-foreground"
+              icon={<Zap className="h-3 w-3 text-primary" />}
+              className="mx-auto mb-3 rounded-md border border-border bg-card font-mono text-xs text-muted-foreground"
             >
               {t("features.badge")}
             </AnimatedBadge>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl text-foreground">
               {t("features.title")}
             </h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-2 text-xs text-muted-foreground sm:text-sm">
               {t("features.description")}
             </p>
-          </ScrollReveal>
+          </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {features.map((feature, index) => (
-              <ScrollReveal key={feature.title} delay={index * 0.04}>
-                <TiltCard className="glass-panel h-full rounded-3xl p-5">
-                  <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-border bg-primary/10 text-primary">
-                    <feature.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-lg font-semibold tracking-tight">{feature.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{feature.body}</p>
-                </TiltCard>
-              </ScrollReveal>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => (
+              <div key={feature.title} className="vscode-card h-full p-4 transition-colors hover:border-primary/40">
+                <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
+                  <feature.icon className="h-4 w-4" />
+                </div>
+                <h3 className="text-sm font-semibold tracking-tight text-foreground">{feature.title}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{feature.body}</p>
+              </div>
             ))}
           </div>
         </section>
 
+        {/* WORKFLOW SECTION */}
         <section id="workflow" className="section-shell py-8 lg:py-12">
-          <div className="glass-panel overflow-hidden rounded-[2rem] p-6 sm:p-8 lg:p-10">
-            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-              <ScrollReveal>
+          <div className="vscode-card overflow-hidden p-5 sm:p-7">
+            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
                 <AnimatedBadge
-                  icon={<Layers3 className="h-3.5 w-3.5 text-primary" />}
-                  className="mb-4 border border-border bg-background/50 text-muted-foreground"
+                  icon={<Layers3 className="h-3 w-3 text-primary" />}
+                  className="mb-3 rounded-md border border-border bg-background font-mono text-xs text-muted-foreground"
                 >
                   {t("workflow.badge")}
                 </AnimatedBadge>
-                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl text-foreground">
                   {t("workflow.title")}
                 </h2>
-                <p className="mt-3 max-w-xl text-muted-foreground">
+                <p className="mt-2 max-w-xl text-xs text-muted-foreground sm:text-sm">
                   {t("workflow.description")}
                 </p>
-              </ScrollReveal>
+              </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {workflowSteps.map((step, index) => (
-                  <ScrollReveal key={step.title} delay={index * 0.05}>
-                    <div className="rounded-3xl border border-border bg-background/45 p-4 sm:p-5">
-                      <div className="flex items-start gap-4">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary text-sm font-semibold text-primary-foreground">
-                          {index + 1}
-                        </div>
-                        <div>
-                          <h3 className="text-base font-semibold">{step.title}</h3>
-                          <p className="mt-1 text-sm leading-6 text-muted-foreground">{step.detail}</p>
-                        </div>
+                  <div key={step.title} className="rounded-md border border-border bg-background p-3.5 transition-colors hover:border-primary/30">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary font-mono text-xs font-bold text-primary-foreground">
+                        0{index + 1}
+                      </div>
+                      <div>
+                        <h3 className="text-xs font-semibold text-foreground">{step.title}</h3>
+                        <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{step.detail}</p>
                       </div>
                     </div>
-                  </ScrollReveal>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        <section id="preview" className="section-shell py-16 lg:py-20">
-          <ScrollReveal className="mb-8 max-w-2xl">
+        {/* PREVIEW SECTION */}
+        <section id="preview" className="section-shell py-12 lg:py-16">
+          <div className="mb-6 max-w-2xl">
             <AnimatedBadge
-              icon={<MonitorSmartphone className="h-3.5 w-3.5 text-primary" />}
-              className="mb-4 border border-border bg-card text-muted-foreground"
+              icon={<MonitorSmartphone className="h-3 w-3 text-primary" />}
+              className="mb-3 rounded-md border border-border bg-card font-mono text-xs text-muted-foreground"
             >
               {t("preview.badge")}
             </AnimatedBadge>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl text-foreground">
               {t("preview.title")}
             </h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-2 text-xs text-muted-foreground sm:text-sm">
               {t("preview.description")}
             </p>
-          </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={0.06}>
-            <Tabs defaultValue="overview" className="w-full">
-              <div className="mb-6 flex justify-center">
-                <TabsList className="glass-panel flex-wrap justify-center border border-border/70 p-1.5 shadow-sm">
+          <Tabs defaultValue="overview" value={previewTab} onValueChange={setPreviewTab} variant="vscode" className="w-full">
+            {/* VS Code Editor Frame */}
+            <div className="vscode-editor-frame overflow-hidden rounded-lg border border-border bg-[var(--vscode-editor,#1e1e1e)] shadow-lg">
+              {/* Editor Tab Bar */}
+              <div className="flex items-center justify-between border-b border-border bg-[var(--vscode-tab-inactive,#2d2d30)]">
+                <TabsList className="border-b-0 bg-transparent">
                   <TabsTrigger value="overview">
-                    {t("preview.tabOverview")}
+                    <FileCode className="h-3.5 w-3.5 text-sky-400" />
+                    <span>{t("preview.tabOverview")}</span>
                   </TabsTrigger>
                   <TabsTrigger value="storage">
-                    {t("preview.tabStorage")}
+                    <FolderKanban className="h-3.5 w-3.5 text-amber-400" />
+                    <span>{t("preview.tabStorage")}</span>
                   </TabsTrigger>
                   <TabsTrigger value="clean">
-                    {t("preview.tabCleanCache")}
+                    <TerminalSquare className="h-3.5 w-3.5 text-emerald-400" />
+                    <span>{t("preview.tabCleanCache")}</span>
                   </TabsTrigger>
                 </TabsList>
+
+                <div className="hidden pr-3 font-mono text-[11px] text-muted-foreground sm:block">
+                  preview://projects-runner-app
+                </div>
               </div>
 
-              <TabsContent value="overview">
-                <TiltCard className="glass-panel overflow-hidden rounded-[2rem] p-3 sm:p-4">
-                  <img
-                    src="/screenshot-new.jpg"
-                    alt={t("preview.overviewAlt")}
-                    className="w-full rounded-[1.4rem] border border-border/70 object-cover shadow-[0_24px_80px_rgba(2,6,23,0.18)]"
-                  />
-                </TiltCard>
-              </TabsContent>
+              {/* Editor Breadcrumbs */}
+              <div className="flex h-6 items-center gap-1.5 border-b border-border/60 bg-[var(--vscode-editor,#1e1e1e)] px-3 font-mono text-[11px] text-muted-foreground">
+                <span>projects-runner</span>
+                <span>&gt;</span>
+                <span>screenshots</span>
+                <span>&gt;</span>
+                <span className="text-foreground">{previewTab === "overview" ? "overview.jpg" : previewTab === "storage" ? "storage.jpg" : "clean-cache.jpg"}</span>
+              </div>
 
-              <TabsContent value="storage">
-                <TiltCard className="glass-panel overflow-hidden rounded-[2rem] p-3 sm:p-4">
-                  <img
-                    src="/thanh-dung-luong.jpg"
-                    alt={t("preview.storageAlt")}
-                    className="w-full rounded-[1.4rem] border border-border/70 object-cover shadow-[0_24px_80px_rgba(2,6,23,0.18)]"
-                  />
-                </TiltCard>
-              </TabsContent>
+              {/* Tab Contents */}
+              <div className="p-2 sm:p-3">
+                <TabsContent value="overview">
+                  <div className="overflow-hidden rounded-md border border-border/80">
+                    <img
+                      src="/screenshot-new.jpg"
+                      alt={t("preview.overviewAlt")}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                </TabsContent>
 
-              <TabsContent value="clean">
-                <TiltCard className="glass-panel overflow-hidden rounded-[2rem] p-3 sm:p-4">
-                  <img
-                    src="/clean-temp.jpg"
-                    alt={t("preview.cleanCacheAlt")}
-                    className="w-full rounded-[1.4rem] border border-border/70 object-cover shadow-[0_24px_80px_rgba(2,6,23,0.18)]"
-                  />
-                </TiltCard>
-              </TabsContent>
-            </Tabs>
-          </ScrollReveal>
-        </section>
+                <TabsContent value="storage">
+                  <div className="overflow-hidden rounded-md border border-border/80">
+                    <img
+                      src="/thanh-dung-luong.jpg"
+                      alt={t("preview.storageAlt")}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                </TabsContent>
 
-        <section className="section-shell py-8">
-          <ScrollReveal>
-            <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-gradient-to-br from-sky-500/15 via-card to-indigo-500/10 p-8 sm:p-10">
-              <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-sky-400/20 blur-3xl" />
-              <div className="relative grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-                <div>
-                  <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                    {t("cta.title")}
-                  </h2>
-                  <p className="mt-3 max-w-2xl text-muted-foreground">
-                    {t("cta.description")}
-                  </p>
+                <TabsContent value="clean">
+                  <div className="overflow-hidden rounded-md border border-border/80">
+                    <img
+                      src="/clean-temp.jpg"
+                      alt={t("preview.cleanCacheAlt")}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                </TabsContent>
+              </div>
+
+              {/* Editor status bar */}
+              <div className="flex h-6 items-center justify-between border-t border-border bg-[var(--vscode-status,#007acc)] px-3 text-[10px] text-white font-mono select-none">
+                <div className="flex items-center gap-3">
+                  <span>PNG 1920x1080</span>
+                  <span>100% Zoom</span>
                 </div>
-                <div className="flex flex-wrap gap-3 lg:justify-end">
-                  <a
-                    href={RELEASES_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={RELEASE_LINK_CLASS}
-                  >
-                    {t("cta.download")}
-                  </a>
-                  <Button variant="secondary" size="lg" onClick={openRepository}>
-                    <Github className="h-4 w-4" />
-                    {t("cta.source")}
-                  </Button>
+                <div className="flex items-center gap-2">
+                  <Check className="h-3 w-3" />
+                  <span>Projects Runner Desktop</span>
                 </div>
               </div>
             </div>
-          </ScrollReveal>
+          </Tabs>
         </section>
 
-        <section id="faq" className="section-shell py-16 lg:py-20">
-          <ScrollReveal className="mb-8 max-w-2xl">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t("faq.title")}</h2>
-            <p className="mt-3 text-muted-foreground">
+        {/* CTA BANNER SECTION */}
+        <section className="section-shell py-8">
+          <div className="relative overflow-hidden rounded-lg border border-primary/40 bg-card p-6 sm:p-8 shadow-md">
+            <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl text-foreground">
+                  {t("cta.title")}
+                </h2>
+                <p className="mt-2 max-w-xl text-xs text-muted-foreground sm:text-sm">
+                  {t("cta.description")}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2.5 lg:justify-end">
+                <a
+                  href={RELEASES_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={RELEASE_LINK_CLASS}
+                >
+                  {t("cta.download")}
+                </a>
+                <Button variant="secondary" size="md" className="rounded-md" onClick={openRepository}>
+                  <Github className="h-3.5 w-3.5" />
+                  {t("cta.source")}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ SECTION */}
+        <section id="faq" className="section-shell py-12 lg:py-16">
+          <div className="mb-6 max-w-2xl">
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl text-foreground">{t("faq.title")}</h2>
+            <p className="mt-2 text-xs text-muted-foreground sm:text-sm">
               {t("faq.description")}
             </p>
-          </ScrollReveal>
-          <div className="grid gap-3 md:grid-cols-2">
-            {faqs.map((item, index) => (
-              <ScrollReveal key={item.q} delay={index * 0.04}>
-                <div className="glass-panel h-full rounded-3xl p-5">
-                  <h3 className="text-base font-semibold">{item.q}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.a}</p>
-                </div>
-              </ScrollReveal>
+          </div>
+          <div className="grid gap-2.5 md:grid-cols-2">
+            {faqs.map((item) => (
+              <div key={item.q} className="vscode-card h-full p-4 transition-colors hover:border-primary/30">
+                <h3 className="text-xs font-semibold text-foreground">{item.q}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{item.a}</p>
+              </div>
             ))}
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-border/70 py-8">
-        <div className="section-shell flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/app-icon.png" alt="" className="h-8 w-8 rounded-lg border border-border object-cover" />
+      {/* FOOTER */}
+      <footer className="border-t border-border bg-[var(--vscode-activity,#181818)] pt-5">
+        <div className="section-shell pb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-2.5">
+            <img src="/app-icon.png" alt="" className="h-5 w-5 rounded-[3px] border border-border object-cover" />
             <div>
-              <div className="text-sm font-semibold">Projects Runner</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="text-xs font-semibold text-foreground">Projects Runner</div>
+              <div className="font-mono text-[11px] text-muted-foreground">
                 {t("footer.domain")}
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
             <a
               href={EMAIL_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border/70 bg-card/50 px-3 py-1.5 transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-border bg-card px-2.5 py-1 text-xs transition-colors hover:border-primary/40 hover:text-foreground"
             >
-              <Mail className="h-4 w-4 shrink-0" />
+              <Mail className="h-3.5 w-3.5 shrink-0" />
               {t("footer.email")}
             </a>
             <a
               href={TELEGRAM_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border/70 bg-card/50 px-3 py-1.5 transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-border bg-card px-2.5 py-1 text-xs transition-colors hover:border-primary/40 hover:text-foreground"
             >
-              <Send className="h-4 w-4 shrink-0" />
+              <Send className="h-3.5 w-3.5 shrink-0" />
               {t("footer.telegram")}
             </a>
+          </div>
+        </div>
+
+        {/* Bottom VS Code Status Bar */}
+        <div className="border-t border-border bg-[var(--vscode-status,#007acc)] py-1 text-white font-mono text-[11px] select-none">
+          <div className="section-shell flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1">
+                <GitBranch className="h-3 w-3" />
+                <span>main*</span>
+              </div>
+              <span className="hidden sm:inline">Ln 1, Col 1</span>
+              <span className="hidden sm:inline">Spaces: 2</span>
+            </div>
+            <div className="flex items-center gap-3 text-[10px]">
+              <span>UTF-8</span>
+              <span>Projects Runner</span>
+            </div>
           </div>
         </div>
       </footer>

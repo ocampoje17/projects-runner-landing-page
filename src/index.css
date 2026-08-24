@@ -3,8 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --font-sans: "Segoe UI", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "Cascadia Code", "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+  --font-sans: "Segoe UI Variable", "Segoe UI", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "Cascadia Mono", "Cascadia Code", "SF Mono", Consolas, "Liberation Mono", ui-monospace, monospace;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -27,69 +27,77 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
 }
 
 :root {
-  --radius: 0.9rem;
-  --background: #f4f7fb;
-  --foreground: #0f172a;
-  --card: rgba(255, 255, 255, 0.78);
-  --card-foreground: #0f172a;
+  --radius: 0.5rem;
+  --background: #f6f8fa;
+  --foreground: #1f2328;
+  --card: #ffffff;
+  --card-foreground: #1f2328;
   --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #0284c7;
-  --primary-foreground: #f8fafc;
-  --secondary: #e2e8f0;
-  --secondary-foreground: #0f172a;
-  --muted: #e8eef7;
-  --muted-foreground: #64748b;
-  --accent: #dbeafe;
-  --accent-foreground: #0c4a6e;
-  --destructive: #ef4444;
-  --border: rgba(15, 23, 42, 0.1);
-  --input: rgba(15, 23, 42, 0.08);
-  --ring: #38bdf8;
+  --popover-foreground: #1f2328;
+  --primary: #007acc;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f3f3;
+  --secondary-foreground: #1f2328;
+  --muted: #ececec;
+  --muted-foreground: #5f6368;
+  --accent: #e6f2fa;
+  --accent-foreground: #005999;
+  --destructive: #e51400;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: rgba(0, 0, 0, 0.1);
+  --ring: #007acc;
   --success: #16a34a;
-  --warning: #d97706;
-  --glow: rgba(14, 165, 233, 0.28);
-  --surface-strong: rgba(255, 255, 255, 0.88);
-  --hero-glow-a: rgba(56, 189, 248, 0.28);
-  --hero-glow-b: rgba(99, 102, 241, 0.18);
-  --hero-glow-c: rgba(34, 197, 94, 0.14);
-  --grid-line: rgba(15, 23, 42, 0.05);
+  --warning: #b45309;
+  --grid-line: rgba(0, 0, 0, 0.04);
+
+  --vscode-shell: #f6f8fa;
+  --vscode-activity: #f3f3f3;
+  --vscode-sidebar: #f3f3f3;
+  --vscode-editor: #ffffff;
+  --vscode-panel: #f3f3f3;
+  --vscode-tab-active: #ffffff;
+  --vscode-tab-inactive: #ececec;
+  --vscode-status: #007acc;
 }
 
 .dark {
-  --background: #060b14;
-  --foreground: #e5eefb;
-  --card: rgba(15, 23, 42, 0.72);
-  --card-foreground: #e5eefb;
-  --popover: #0b1220;
-  --popover-foreground: #e5eefb;
-  --primary: #38bdf8;
-  --primary-foreground: #04111f;
-  --secondary: #132033;
-  --secondary-foreground: #e5eefb;
-  --muted: #111a2b;
-  --muted-foreground: #94a3b8;
-  --accent: #0f2740;
-  --accent-foreground: #bae6fd;
-  --destructive: #f87171;
-  --border: rgba(148, 163, 184, 0.16);
-  --input: rgba(148, 163, 184, 0.12);
-  --ring: #38bdf8;
-  --success: #4ade80;
-  --warning: #fbbf24;
-  --glow: rgba(56, 189, 248, 0.22);
-  --surface-strong: rgba(8, 15, 28, 0.82);
-  --hero-glow-a: rgba(56, 189, 248, 0.22);
-  --hero-glow-b: rgba(129, 140, 248, 0.16);
-  --hero-glow-c: rgba(34, 197, 94, 0.12);
-  --grid-line: rgba(148, 163, 184, 0.08);
+  --background: #181818;
+  --foreground: #cccccc;
+  --card: #252526;
+  --card-foreground: #f3f3f3;
+  --popover: #252526;
+  --popover-foreground: #f3f3f3;
+  --primary: #007acc;
+  --primary-foreground: #ffffff;
+  --secondary: #2a2d2e;
+  --secondary-foreground: #f3f3f3;
+  --muted: #2d2d30;
+  --muted-foreground: #9da0a6;
+  --accent: #264f78;
+  --accent-foreground: #ffffff;
+  --destructive: #f14c4c;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #007acc;
+  --success: #4ec9b0;
+  --warning: #cca700;
+  --grid-line: rgba(255, 255, 255, 0.03);
+
+  --vscode-shell: #181818;
+  --vscode-activity: #181818;
+  --vscode-sidebar: #252526;
+  --vscode-editor: #1e1e1e;
+  --vscode-panel: #252526;
+  --vscode-tab-active: #1e1e1e;
+  --vscode-tab-inactive: #2d2d30;
+  --vscode-status: #007acc;
 }
 
 * {
@@ -106,29 +114,10 @@ body {
   min-height: 100vh;
   font-family: var(--font-sans);
   color: var(--foreground);
-  background:
-    radial-gradient(circle at 12% 8%, var(--hero-glow-a), transparent 28%),
-    radial-gradient(circle at 86% 12%, var(--hero-glow-b), transparent 24%),
-    radial-gradient(circle at 70% 78%, var(--hero-glow-c), transparent 28%),
-    linear-gradient(180deg, color-mix(in oklab, var(--background) 92%, #38bdf8 8%), var(--background) 42%, var(--background));
-  background-attachment: fixed;
+  background-color: var(--background);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(circle at center, black, transparent 78%);
-  opacity: 0.55;
-  z-index: -1;
 }
 
 a {
@@ -137,7 +126,7 @@ a {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--primary) 35%, transparent);
+  background: color-mix(in srgb, var(--primary) 35%, transparent);
   color: var(--foreground);
 }
 
@@ -172,12 +161,27 @@ a {
   border: 1px solid var(--border);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.04) inset,
-    0 18px 50px rgba(2, 8, 23, 0.12);
-  backdrop-filter: blur(18px);
+    0 8px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+@utility vscode-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+@utility vscode-editor-frame {
+  background: var(--vscode-editor);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 @utility section-shell {
-  width: min(1120px, calc(100% - 2rem));
+  width: min(1160px, calc(100% - 2rem));
   margin-inline: auto;
 }
 
