@@ -428,7 +428,7 @@ function App() {
                     <div>
                       <div className="flex items-center gap-1.5">
                         <span className="font-semibold text-xs text-foreground">{heroActiveProject}-app</span>
-                        <span className="rounded bg-primary/15 px-1 py-0.1 font-mono text-[9px] text-primary">v0.7.0</span>
+                        <span className="rounded bg-primary/15 px-1 py-0.1 font-mono text-[9px] text-primary">v0.7.2</span>
                       </div>
                       <div className="font-mono text-[10px] text-muted-foreground flex items-center gap-2">
                         <span>~/DEV/{heroActiveProject}</span>
