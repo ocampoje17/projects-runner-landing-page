@@ -14,7 +14,7 @@ const en = {
     github: "GitHub",
   },
   hero: {
-    badge: "Desktop command workspace",
+    badge: "Desktop command & 2FA workspace",
     title: "Keep your project commands in one reliable place.",
     description:
       "Projects Runner helps you save project commands, organize them by workspace, and launch your daily local workflows faster.",
@@ -49,18 +49,18 @@ const en = {
     commandLibraryTitle: "Reusable command library",
     commandLibraryBody:
       "Save build, run, test, or custom commands once, then launch them again without retyping shell history.",
+    twofaVaultTitle: "Built-in 2FA authenticator vault",
+    twofaVaultBody:
+      "Manage TOTP 2FA accounts linked directly to your projects. Encrypted with Argon2id and XChaCha20-Poly1305, with fast 6-digit PIN unlock, auto-lock, and auto-clearing clipboard.",
     fasterLoopsTitle: "Faster local workflow",
     fasterLoopsBody:
       "Move from project switching to command execution with fewer clicks and less context loss.",
     personalPrefsTitle: "Comfortable daily setup",
     personalPrefsBody:
       "Adjust theme, accent, terminal font, timestamps, and other details to match how you work.",
-    privacyTitle: "Local and private",
+    privacyTitle: "Local and strictly private",
     privacyBody:
-      "Your projects and command definitions stay on your machine. No cloud account is required.",
-    dailyUseTitle: "Made for repeated use",
-    dailyUseBody:
-      "Built for developers who work across multiple projects and want a dependable command surface every day.",
+      "Your projects, 2FA secret keys, and command definitions stay encrypted on your device. No cloud account or external telemetry required.",
   },
   workflow: {
     badge: "Workflow",
@@ -81,11 +81,15 @@ const en = {
     badge: "Preview",
     title: "One clean window for projects, commands, and runtime",
     description:
-      "Real Projects Runner screenshots showing workspaces, commands, storage breakdown, and cache management in the same view.",
+      "Real Projects Runner screenshots showing workspaces, commands, 2FA authenticator vault, dev stack configuration, storage breakdown, and cache management.",
     tabOverview: "Overview & Workspaces",
+    tabTwofa: "2FA Authenticator Vault",
+    tabDevType: "Dev Type & Stack",
     tabStorage: "Storage & File Breakdown",
     tabCleanCache: "Clean Dev Cache & Dependencies",
     overviewAlt: "Projects Runner workspace and commands overview",
+    twofaAlt: "Projects Runner built-in 2FA authenticator vault and accounts management",
+    devTypeAlt: "Projects Runner developer type and project tech stack configuration",
     storageAlt: "Projects Runner storage analyzer and details panel",
     cleanCacheAlt: "Projects Runner clean dev cache and dependencies dialog",
     projectsTab: "Projects",
@@ -128,12 +132,18 @@ const en = {
     whatIsQ: "What is Projects Runner?",
     whatIsA:
       "It is a desktop app for saving and launching project commands from a reusable workspace.",
+    twofaQ: "How does the built-in 2FA Authenticator work?",
+    twofaA:
+      "Projects Runner includes an encrypted TOTP vault (Argon2id + XChaCha20-Poly1305) directly in your desktop workspace. You can link 2FA accounts to specific projects, unlock with a 6-digit PIN, and copy codes with automatic clipboard clearing.",
     whoIsItForQ: "Who is it for?",
     whoIsItForA:
       "It is for developers who work across multiple repositories, scripts, or local services and want a faster command loop.",
     cloudQ: "Does it need the cloud?",
     cloudA:
       "No. The app is local-first, so your projects, notes, and commands stay on your machine.",
+    backupQ: "Can I backup and export my 2FA accounts?",
+    backupA:
+      "Yes. You can export encrypted .pr2fa backups protected by your master password, scan QR codes directly from screen or images, and restore your accounts at any time.",
     platformsQ: "Which platforms are supported?",
     platformsA:
       "Supports Windows, macOS, and Linux.",

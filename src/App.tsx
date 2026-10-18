@@ -9,7 +9,7 @@ import {
   FolderOpen,
   GitBranch,
   Github,
-  Keyboard,
+  KeyRound,
   Layers3,
   Mail,
   MonitorSmartphone,
@@ -86,6 +86,11 @@ function App() {
       body: t("features.commandLibraryBody"),
     },
     {
+      icon: KeyRound,
+      title: t("features.twofaVaultTitle"),
+      body: t("features.twofaVaultBody"),
+    },
+    {
       icon: Workflow,
       title: t("features.fasterLoopsTitle"),
       body: t("features.fasterLoopsBody"),
@@ -99,11 +104,6 @@ function App() {
       icon: ShieldCheck,
       title: t("features.privacyTitle"),
       body: t("features.privacyBody"),
-    },
-    {
-      icon: Keyboard,
-      title: t("features.dailyUseTitle"),
-      body: t("features.dailyUseBody"),
     },
   ];
 
@@ -128,12 +128,20 @@ function App() {
       a: t("faq.whatIsA"),
     },
     {
+      q: t("faq.twofaQ"),
+      a: t("faq.twofaA"),
+    },
+    {
       q: t("faq.whoIsItForQ"),
       a: t("faq.whoIsItForA"),
     },
     {
       q: t("faq.cloudQ"),
       a: t("faq.cloudA"),
+    },
+    {
+      q: t("faq.backupQ"),
+      a: t("faq.backupA"),
     },
     {
       q: t("faq.platformsQ"),
@@ -309,6 +317,9 @@ function App() {
                     <span className="absolute left-0 top-0.5 bottom-0.5 w-0.5 bg-primary rounded-r" />
                     <FolderKanban className="h-3.5 w-3.5" />
                   </button>
+                  <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="2FA Security">
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                  </button>
                   <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="Flows">
                     <Workflow className="h-3.5 w-3.5" />
                   </button>
@@ -361,9 +372,12 @@ function App() {
                         <TerminalSquare className="h-2.5 w-2.5" />
                         build
                       </div>
-                      <div className="flex items-center gap-1 text-muted-foreground hover:text-foreground">
-                        <TerminalSquare className="h-2.5 w-2.5" />
-                        lint
+                      <div className="flex items-center justify-between text-muted-foreground hover:text-foreground">
+                        <span className="flex items-center gap-1">
+                          <KeyRound className="h-2.5 w-2.5 text-emerald-400" />
+                          2FA
+                        </span>
+                        <span className="font-mono text-[9px] text-emerald-400/80">3 keys</span>
                       </div>
                     </div>
                   </div>
@@ -580,6 +594,10 @@ function App() {
                   <span>main*</span>
                 </div>
                 <span>{heroDevRunning ? "1 active process" : "0 active processes"}</span>
+                <span className="hidden sm:inline text-white/50">|</span>
+                <span className="hidden sm:flex items-center gap-1 text-emerald-300">
+                  <ShieldCheck className="h-2.5 w-2.5" /> 2FA: Unlocked
+                </span>
               </div>
               <div className="flex items-center gap-3">
                 {heroDevRunning ? <span>Port: 6810</span> : null}
@@ -680,17 +698,25 @@ function App() {
             <div className="vscode-editor-frame overflow-hidden rounded-lg border border-border bg-[var(--vscode-editor,#1e1e1e)] shadow-lg">
               {/* Editor Tab Bar */}
               <div className="flex items-center justify-between border-b border-border bg-[var(--vscode-tab-inactive,#2d2d30)]">
-                <TabsList className="border-b-0 bg-transparent">
+                <TabsList className="border-b-0 bg-transparent flex flex-wrap">
                   <TabsTrigger value="overview">
                     <FileCode className="h-3.5 w-3.5 text-sky-400" />
                     <span>{t("preview.tabOverview")}</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="twofa">
+                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+                    <span>{t("preview.tabTwofa")}</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="devType">
+                    <WandSparkles className="h-3.5 w-3.5 text-purple-400" />
+                    <span>{t("preview.tabDevType")}</span>
                   </TabsTrigger>
                   <TabsTrigger value="storage">
                     <FolderKanban className="h-3.5 w-3.5 text-amber-400" />
                     <span>{t("preview.tabStorage")}</span>
                   </TabsTrigger>
                   <TabsTrigger value="clean">
-                    <TerminalSquare className="h-3.5 w-3.5 text-emerald-400" />
+                    <TerminalSquare className="h-3.5 w-3.5 text-rose-400" />
                     <span>{t("preview.tabCleanCache")}</span>
                   </TabsTrigger>
                 </TabsList>
@@ -701,12 +727,22 @@ function App() {
               </div>
 
               {/* Editor Breadcrumbs */}
-              <div className="flex h-6 items-center gap-1.5 border-b border-border/60 bg-[var(--vscode-editor,#1e1e1e)] px-3 font-mono text-[11px] text-muted-foreground">
+              <div className="flex h-6 items-center gap-1.5 border-b border-border/60 bg-[var(--vscode-editor,#1e1e1e)] px-3 font-mono text-[11px] text-muted-foreground overflow-x-auto">
                 <span>projects-runner</span>
                 <span>&gt;</span>
                 <span>screenshots</span>
                 <span>&gt;</span>
-                <span className="text-foreground">{previewTab === "overview" ? "overview.jpg" : previewTab === "storage" ? "storage.jpg" : "clean-cache.jpg"}</span>
+                <span className="text-foreground">
+                  {previewTab === "overview"
+                    ? "overview.jpg"
+                    : previewTab === "twofa"
+                    ? "manage-2fa.jpg"
+                    : previewTab === "devType"
+                    ? "set-project-dev-type.jpg"
+                    : previewTab === "storage"
+                    ? "storage.jpg"
+                    : "clean-cache.jpg"}
+                </span>
               </div>
 
               {/* Tab Contents */}
@@ -716,6 +752,26 @@ function App() {
                     <img
                       src="/screenshot-new.jpg"
                       alt={t("preview.overviewAlt")}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="twofa">
+                  <div className="overflow-hidden rounded-md border border-border/80">
+                    <img
+                      src="/manage-2fa.jpg"
+                      alt={t("preview.twofaAlt")}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="devType">
+                  <div className="overflow-hidden rounded-md border border-border/80">
+                    <img
+                      src="/set-project-dev-type.jpg"
+                      alt={t("preview.devTypeAlt")}
                       className="w-full object-cover"
                     />
                   </div>
