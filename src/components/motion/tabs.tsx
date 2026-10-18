@@ -83,7 +83,7 @@ export function TabsTrigger({
         aria-selected={active}
         onClick={() => setValue(value)}
         className={cn(
-          "relative isolate inline-flex h-9 items-center gap-2 border-r border-border px-4 text-xs font-medium transition-colors outline-none cursor-pointer select-none",
+          "relative isolate inline-flex h-9 shrink-0 whitespace-nowrap items-center gap-2 border-r border-border px-4 text-xs font-medium transition-colors outline-none cursor-pointer select-none",
           active
             ? "bg-[var(--vscode-tab-active,#1e1e1e)] text-foreground border-t-2 border-t-primary"
             : "bg-transparent text-muted-foreground hover:bg-foreground/[0.04] hover:text-foreground border-t-2 border-t-transparent",

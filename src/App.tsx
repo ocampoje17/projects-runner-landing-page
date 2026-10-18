@@ -698,36 +698,38 @@ function App() {
             <div className="vscode-editor-frame overflow-hidden rounded-lg border border-border bg-[var(--vscode-editor,#1e1e1e)] shadow-lg">
               {/* Editor Tab Bar */}
               <div className="flex items-center justify-between border-b border-border bg-[var(--vscode-tab-inactive,#2d2d30)]">
-                <TabsList className="border-b-0 bg-transparent flex flex-wrap">
-                  <TabsTrigger value="overview">
-                    <FileCode className="h-3.5 w-3.5 text-sky-400" />
-                    <span>{t("preview.tabOverview")}</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="twofa">
-                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-                    <span>{t("preview.tabTwofa")}</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="devType">
-                    <WandSparkles className="h-3.5 w-3.5 text-purple-400" />
-                    <span>{t("preview.tabDevType")}</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="storage">
-                    <FolderKanban className="h-3.5 w-3.5 text-amber-400" />
-                    <span>{t("preview.tabStorage")}</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="clean">
-                    <TerminalSquare className="h-3.5 w-3.5 text-rose-400" />
-                    <span>{t("preview.tabCleanCache")}</span>
-                  </TabsTrigger>
-                </TabsList>
+                <div className="flex-1 min-w-0 overflow-x-auto scrollbar-thin">
+                  <TabsList className="border-b-0 bg-transparent flex flex-nowrap min-w-max">
+                    <TabsTrigger value="overview">
+                      <FileCode className="h-3.5 w-3.5 text-sky-400" />
+                      <span>{t("preview.tabOverview")}</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="twofa">
+                      <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+                      <span>{t("preview.tabTwofa")}</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="devType">
+                      <WandSparkles className="h-3.5 w-3.5 text-purple-400" />
+                      <span>{t("preview.tabDevType")}</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="storage">
+                      <FolderKanban className="h-3.5 w-3.5 text-amber-400" />
+                      <span>{t("preview.tabStorage")}</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="clean">
+                      <TerminalSquare className="h-3.5 w-3.5 text-rose-400" />
+                      <span>{t("preview.tabCleanCache")}</span>
+                    </TabsTrigger>
+                  </TabsList>
+                </div>
 
-                <div className="hidden pr-3 font-mono text-[11px] text-muted-foreground sm:block">
+                <div className="hidden pr-3 pl-2 font-mono text-[11px] text-muted-foreground sm:block shrink-0">
                   preview://projects-runner-app
                 </div>
               </div>
 
               {/* Editor Breadcrumbs */}
-              <div className="flex h-6 items-center gap-1.5 border-b border-border/60 bg-[var(--vscode-editor,#1e1e1e)] px-3 font-mono text-[11px] text-muted-foreground overflow-x-auto">
+              <div className="flex h-6 items-center gap-1.5 border-b border-border/60 bg-[var(--vscode-editor,#1e1e1e)] px-3 font-mono text-[11px] text-muted-foreground overflow-x-auto scrollbar-thin">
                 <span>projects-runner</span>
                 <span>&gt;</span>
                 <span>screenshots</span>
