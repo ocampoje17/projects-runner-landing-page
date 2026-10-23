@@ -126,6 +126,49 @@ const vi = {
     download: "Mở trang phát hành",
     source: "Xem repository",
   },
+  changelog: {
+    title: "Lịch sử cập nhật",
+    description: "5 bản cập nhật gần nhất của Projects Runner.",
+    latest: "Mới nhất",
+    viewAll: "Xem tất cả bản phát hành",
+    releaseLink: "Xem bản phát hành {{version}}",
+    releases: {
+      v073: {
+        title: "Sửa lỗi interactive terminal không tương tác được",
+        details: ["Khắc phục lỗi không thể tương tác với interactive terminal."],
+      },
+      v072: {
+        title: "Cập nhật bổ sung 2FA",
+        details: [
+          "Loại bỏ chức năng Flows hiện có nhằm tinh gọn hệ thống.",
+          "Bổ sung chức năng thêm và quản lý mã xác thực TOTP (2FA), hỗ trợ lấy mã xác thực trực tiếp trên máy tính, thuận tiện cho quá trình kiểm thử ứng dụng (test app) và thao tác hằng ngày.",
+          "Đại tu và tối ưu hóa Terminal, cải thiện hiệu suất, độ ổn định và khả năng tương tác, bảo đảm hoạt động mượt mà, ổn định và hiệu quả hơn.",
+        ],
+      },
+      v052: {
+        title: "Cải thiện trải nghiệm giao diện",
+        details: [
+          "Rút gọn phần giữa của văn bản dài để dễ đọc hơn.",
+          "Giữ nguyên tab đang chọn và bổ sung hỗ trợ biểu tượng công nghệ phát triển.",
+        ],
+      },
+      v051: {
+        title: "Sửa lỗi hiển thị và bảng chi tiết",
+        details: [
+          "Sửa lỗi hiển thị trạng thái tải ở thư mục gốc.",
+          "Sửa giao diện bảng chi tiết và cửa sổ chọn biểu tượng.",
+        ],
+      },
+      v050: {
+        title: "Cải tiến Terminal và công cụ dọn dẹp",
+        details: [
+          "Sửa thứ tự mở tab Terminal và lỗi bảng duyệt tệp.",
+          "Bổ sung loại dự án phục vụ dọn dẹp và thanh hiển thị dung lượng thư mục.",
+          "Cải thiện tính năng dọn bộ nhớ đệm ứng dụng và giao diện cửa sổ dọn dẹp.",
+        ],
+      },
+    },
+  },
   faq: {
     title: "Câu hỏi thường gặp",
     description: "Một vài câu trả lời nhanh để hiểu ứng dụng trước khi dùng thử.",

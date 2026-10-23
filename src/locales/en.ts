@@ -126,6 +126,49 @@ const en = {
     download: "Open releases",
     source: "View repository",
   },
+  changelog: {
+    title: "Update history",
+    description: "The 5 latest updates to Projects Runner.",
+    latest: "Latest",
+    viewAll: "View all releases",
+    releaseLink: "View release {{version}}",
+    releases: {
+      v073: {
+        title: "Fix unresponsive interactive terminal",
+        details: ["Fixed an issue that prevented interaction with the interactive terminal."],
+      },
+      v072: {
+        title: "Added 2FA support",
+        details: [
+          "Removed the existing Flows feature to simplify the app.",
+          "Added TOTP (2FA) account management and authentication codes directly on your desktop for app testing and everyday use.",
+          "Overhauled and optimized the Terminal for better performance, stability, and interaction.",
+        ],
+      },
+      v052: {
+        title: "Improved the interface experience",
+        details: [
+          "Truncate long text in the middle for easier reading.",
+          "Preserve the selected tab and support development technology icons.",
+        ],
+      },
+      v051: {
+        title: "Display and detail panel fixes",
+        details: [
+          "Fixed the loading state at the root directory.",
+          "Fixed the detail panel interface and icon picker popup.",
+        ],
+      },
+      v050: {
+        title: "Terminal and cleanup improvements",
+        details: [
+          "Fixed Terminal tab opening order and file explorer panel issues.",
+          "Added project types for cleanup and a folder size bar.",
+          "Improved app cache cleanup and the cleanup popup interface.",
+        ],
+      },
+    },
+  },
   faq: {
     title: "FAQ",
     description: "Quick answers for visitors who want to understand the app before trying it.",

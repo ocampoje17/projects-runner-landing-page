@@ -29,6 +29,7 @@ import {
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AnalyticsConsentDialog } from "@/components/analytics-consent-dialog";
+import { Changelog } from "@/components/changelog";
 import { AnimatedBadge } from "@/components/motion/animated-badge";
 import { Button } from "@/components/motion/button/base";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/motion/tabs";
@@ -844,6 +845,8 @@ function App() {
             </div>
           </div>
         </section>
+
+        <Changelog />
 
         {/* FAQ SECTION */}
         <section id="faq" className="section-shell py-12 lg:py-16">
