@@ -709,6 +709,10 @@ function App() {
                       <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
                       <span>{t("preview.tabTwofa")}</span>
                     </TabsTrigger>
+                    <TabsTrigger value="offlineSync">
+                      <RotateCcw className="h-3.5 w-3.5 text-cyan-400" />
+                      <span>{t("preview.tabOfflineSync")}</span>
+                    </TabsTrigger>
                     <TabsTrigger value="devType">
                       <WandSparkles className="h-3.5 w-3.5 text-purple-400" />
                       <span>{t("preview.tabDevType")}</span>
@@ -740,6 +744,8 @@ function App() {
                     ? "overview.jpg"
                     : previewTab === "twofa"
                     ? "manage-2fa.jpg"
+                    : previewTab === "offlineSync"
+                    ? "offline-sync.jpg"
                     : previewTab === "devType"
                     ? "set-project-dev-type.jpg"
                     : previewTab === "storage"
@@ -765,6 +771,19 @@ function App() {
                     <img
                       src="/manage-2fa.jpg"
                       alt={t("preview.twofaAlt")}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="offlineSync">
+                  <div className="overflow-hidden rounded-md border border-border/80">
+                    <img
+                      src="/offline-sync.jpg"
+                      alt={t("preview.offlineSyncAlt")}
+                      width={1202}
+                      height={762}
+                      loading="lazy"
                       className="w-full object-cover"
                     />
                   </div>

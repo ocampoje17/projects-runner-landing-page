@@ -81,17 +81,19 @@ const vi = {
     badge: "Xem trước",
     title: "Một cửa sổ gọn gàng cho dự án, lệnh và runtime",
     description:
-      "Ảnh chụp giao diện thực tế của Projects Runner với quản lý workspace, lệnh, két mã 2FA, cấu hình công nghệ, dung lượng và dọn dẹp cache.",
+      "Ảnh chụp giao diện thực tế của Projects Runner với quản lý workspace, lệnh, két mã 2FA, đồng bộ dữ liệu offline, cấu hình công nghệ, dung lượng và dọn dẹp cache.",
     tabOverview: "Tổng quan & Workspace",
     tabTwofa: "Két bảo mật mã 2FA",
     tabDevType: "Cấu hình Dev Type & Stack",
     tabStorage: "Thống kê dung lượng & Files",
     tabCleanCache: "Dọn dẹp Dev Cache & Dependencies",
+    tabOfflineSync: "Sync dữ liệu offline",
     overviewAlt: "Ảnh chụp giao diện tổng quan workspace và lệnh của Projects Runner",
     twofaAlt: "Ảnh chụp két xác thực 2FA tích hợp quản lý mã TOTP theo từng dự án",
     devTypeAlt: "Ảnh chụp cài đặt cấu hình loại dự án và công nghệ phát triển",
     storageAlt: "Ảnh chụp tính năng thống kê dung lượng và chi tiết file",
     cleanCacheAlt: "Ảnh chụp popup dọn dẹp dev cache và dependencies",
+    offlineSyncAlt: "Ảnh chụp cài đặt chọn thư mục và nhóm dữ liệu để đồng bộ offline qua thiết bị lưu trữ ngoài",
     projectsTab: "Dự án",
     commandsTab: "Lệnh",
     runtimeTab: "Runtime",
@@ -133,6 +135,12 @@ const vi = {
     viewAll: "Xem tất cả bản phát hành",
     releaseLink: "Xem bản phát hành {{version}}",
     releases: {
+      v074: {
+        title: "Bổ sung tính năng Sync dữ liệu offline",
+        details: [
+          "Bổ sung chức năng chọn thư mục sync dữ liệu offline thông qua thiết bị lưu trữ ngoài, giúp bạn có thể đồng bộ dữ liệu giữa nhiều máy tính thông qua 1 thư mục đồng bộ chung.",
+        ],
+      },
       v073: {
         title: "Sửa lỗi interactive terminal không tương tác được",
         details: ["Khắc phục lỗi không thể tương tác với interactive terminal."],

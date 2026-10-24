@@ -81,17 +81,19 @@ const en = {
     badge: "Preview",
     title: "One clean window for projects, commands, and runtime",
     description:
-      "Real Projects Runner screenshots showing workspaces, commands, 2FA authenticator vault, dev stack configuration, storage breakdown, and cache management.",
+      "Real Projects Runner screenshots showing workspaces, commands, 2FA authenticator vault, offline data sync, dev stack configuration, storage breakdown, and cache management.",
     tabOverview: "Overview & Workspaces",
     tabTwofa: "2FA Authenticator Vault",
     tabDevType: "Dev Type & Stack",
     tabStorage: "Storage & File Breakdown",
     tabCleanCache: "Clean Dev Cache & Dependencies",
+    tabOfflineSync: "Offline Data Sync",
     overviewAlt: "Projects Runner workspace and commands overview",
     twofaAlt: "Projects Runner built-in 2FA authenticator vault and accounts management",
     devTypeAlt: "Projects Runner developer type and project tech stack configuration",
     storageAlt: "Projects Runner storage analyzer and details panel",
     cleanCacheAlt: "Projects Runner clean dev cache and dependencies dialog",
+    offlineSyncAlt: "Projects Runner settings for choosing an offline sync folder and data groups on external storage",
     projectsTab: "Projects",
     commandsTab: "Commands",
     runtimeTab: "Runtime",
@@ -133,6 +135,12 @@ const en = {
     viewAll: "View all releases",
     releaseLink: "View release {{version}}",
     releases: {
+      v074: {
+        title: "Added offline data sync",
+        details: [
+          "Choose an offline sync folder on an external storage device to synchronize data between multiple computers through one shared sync folder.",
+        ],
+      },
       v073: {
         title: "Fix unresponsive interactive terminal",
         details: ["Fixed an issue that prevented interaction with the interactive terminal."],

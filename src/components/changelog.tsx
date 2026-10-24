@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 
 // Keep release dates explicit so they stay consistent across visitor time zones.
 const releases = [
+  { version: "0.7.4", date: "2026-10-24", key: "v074" },
   { version: "0.7.3", date: "2026-10-20", key: "v073" },
   { version: "0.7.2", date: "2026-10-18", key: "v072" },
   { version: "0.5.2", date: "2026-08-24", key: "v052" },
