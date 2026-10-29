@@ -17,7 +17,7 @@ const en = {
     badge: "Desktop command & 2FA workspace",
     title: "Keep your project commands in one reliable place.",
     description:
-      "Projects Runner helps you save project commands, organize them by workspace, and launch your daily local workflows faster.",
+      "Keep commands and notes with each project, run them when needed, and connect an AI assistant with permissions you choose.",
     download: "Open releases",
     explore: "See features",
   },
@@ -51,16 +51,16 @@ const en = {
       "Save build, run, test, or custom commands once, then launch them again without retyping shell history.",
     twofaVaultTitle: "Built-in 2FA authenticator vault",
     twofaVaultBody:
-      "Manage TOTP 2FA accounts linked directly to your projects. Encrypted with Argon2id and XChaCha20-Poly1305, with fast 6-digit PIN unlock, auto-lock, and auto-clearing clipboard.",
-    fasterLoopsTitle: "Faster local workflow",
+      "Keep project-linked verification codes in an encrypted vault. Unlock with a PIN, copy a code when needed, and lock automatically when you step away.",
+    fasterLoopsTitle: "Connect your AI assistant",
     fasterLoopsBody:
-      "Move from project switching to command execution with fewer clicks and less context loss.",
+      "Let an AI assistant read notes, run saved commands, or follow output through MCP. Choose its projects and permissions, and revoke access when needed.",
     personalPrefsTitle: "Comfortable daily setup",
     personalPrefsBody:
       "Adjust theme, accent, terminal font, timestamps, and other details to match how you work.",
-    privacyTitle: "Local and strictly private",
+    privacyTitle: "Stored on your device",
     privacyBody:
-      "Your projects, 2FA secret keys, and command definitions stay encrypted on your device. No cloud account or external telemetry required.",
+      "Projects, notes, and commands are stored on your device; the authenticator vault is encrypted. AI connections only work when you enable them and grant access.",
   },
   workflow: {
     badge: "Workflow",
@@ -81,14 +81,14 @@ const en = {
     badge: "Preview",
     title: "One clean window for projects, commands, and runtime",
     description:
-      "Real Projects Runner screenshots showing workspaces, commands, 2FA authenticator vault, offline data sync, dev stack configuration, storage breakdown, and cache management.",
+      "Explore project commands, verification codes, and data sync. The overview uses an illustrative demo with all displayed data replaced.",
     tabOverview: "Overview & Workspaces",
     tabTwofa: "2FA Authenticator Vault",
     tabDevType: "Dev Type & Stack",
     tabStorage: "Storage & File Breakdown",
     tabCleanCache: "Clean Dev Cache & Dependencies",
     tabOfflineSync: "Offline Data Sync",
-    overviewAlt: "Projects Runner workspace and commands overview",
+    overviewAlt: "Projects Runner 0.7.7 demo showing Build preview in the fictional moss-studio project; all displayed data has been replaced",
     twofaAlt: "Projects Runner built-in 2FA authenticator vault and accounts management",
     devTypeAlt: "Projects Runner developer type and project tech stack configuration",
     storageAlt: "Projects Runner storage analyzer and details panel",
@@ -135,6 +135,16 @@ const en = {
     viewAll: "View all releases",
     releaseLink: "View release {{version}}",
     releases: {
+      v077: {
+        title: "Connect an AI assistant, with a macOS installer fix",
+        details: [
+          "Connect an AI assistant through MCP to work with local projects, commands, and notes within the permissions you grant.",
+          "Control viewing, editing, running commands, and reading output separately; revoke access when it is no longer needed.",
+          "Improved tracking of running commands and project-linked authenticator accounts.",
+          "Fixed saving notes after clearing the body while keeping the title, and adjusted the preview width.",
+          "Fixed macOS installer packaging and added checks for bundled components.",
+        ],
+      },
       v074: {
         title: "Added offline data sync",
         details: [
@@ -185,7 +195,7 @@ const en = {
       "It is a desktop app for saving and launching project commands from a reusable workspace.",
     twofaQ: "How does the built-in 2FA Authenticator work?",
     twofaA:
-      "Projects Runner includes an encrypted TOTP vault (Argon2id + XChaCha20-Poly1305) directly in your desktop workspace. You can link 2FA accounts to specific projects, unlock with a 6-digit PIN, and copy codes with automatic clipboard clearing.",
+      "Link authenticator accounts to projects and keep them in an encrypted vault. Use a 6-digit PIN for quick unlock, lock automatically when you step away, and clear copied codes from the clipboard automatically.",
     whoIsItForQ: "Who is it for?",
     whoIsItForA:
       "It is for developers who work across multiple repositories, scripts, or local services and want a faster command loop.",

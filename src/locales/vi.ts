@@ -17,7 +17,7 @@ const vi = {
     badge: "Không gian lệnh & bảo mật 2FA trên desktop",
     title: "Giữ toàn bộ lệnh dự án của bạn trong một nơi đáng tin cậy.",
     description:
-      "Projects Runner giúp bạn lưu lệnh theo từng dự án, sắp xếp gọn theo workspace và chạy nhanh hơn các quy trình local hằng ngày.",
+      "Lưu lệnh và ghi chú theo từng dự án, chạy lại khi cần và kết nối trợ lý AI với những quyền do bạn chọn.",
     download: "Mở trang phát hành",
     explore: "Xem tính năng",
   },
@@ -51,16 +51,16 @@ const vi = {
       "Lưu lệnh build, run, test hoặc lệnh tùy chỉnh một lần rồi chạy lại mà không cần lục shell history.",
     twofaVaultTitle: "Két xác thực 2FA tích hợp",
     twofaVaultBody:
-      "Quản lý và tạo mã 2FA TOTP trực tiếp cho từng dự án. Mã hoá Argon2id và XChaCha20-Poly1305, mở khoá nhanh bằng PIN 6 số, tự động khoá khi rời máy và tự xoá clipboard.",
-    fasterLoopsTitle: "Vòng lặp local nhanh hơn",
+      "Giữ mã xác thực theo từng dự án trong kho được mã hoá. Mở khoá nhanh bằng PIN, sao chép mã khi cần và tự động khoá khi rời máy.",
+    fasterLoopsTitle: "Kết nối trợ lý AI",
     fasterLoopsBody:
-      "Chuyển từ đổi dự án sang chạy lệnh với ít thao tác hơn và ít mất ngữ cảnh hơn.",
+      "Cho trợ lý AI đọc ghi chú, chạy lệnh đã lưu hoặc theo dõi kết quả qua MCP. Bạn chọn từng dự án và từng quyền, rồi có thể thu hồi khi cần.",
     personalPrefsTitle: "Thiết lập dùng hằng ngày",
     personalPrefsBody:
       "Chỉnh theme, accent, font terminal, timestamp và các chi tiết khác cho hợp cách làm việc của bạn.",
-    privacyTitle: "Cục bộ và riêng tư tuyệt đối",
+    privacyTitle: "Lưu trên máy của bạn",
     privacyBody:
-      "Dự án, khoá bí mật 2FA và danh sách lệnh đều lưu trữ mã hoá trên máy của bạn. Không tài khoản cloud, không thu thập dữ liệu nhạy cảm.",
+      "Dự án, ghi chú và lệnh được lưu trên máy; kho mã xác thực 2FA được mã hoá. Kết nối trợ lý AI chỉ hoạt động khi bạn bật và cấp quyền.",
   },
   workflow: {
     badge: "Quy trình",
@@ -81,14 +81,14 @@ const vi = {
     badge: "Xem trước",
     title: "Một cửa sổ gọn gàng cho dự án, lệnh và runtime",
     description:
-      "Ảnh chụp giao diện thực tế của Projects Runner với quản lý workspace, lệnh, két mã 2FA, đồng bộ dữ liệu offline, cấu hình công nghệ, dung lượng và dọn dẹp cache.",
+      "Khám phá giao diện quản lý dự án, lệnh, mã xác thực và đồng bộ dữ liệu. Ảnh tổng quan dùng dữ liệu minh hoạ đã được thay thế hoàn toàn.",
     tabOverview: "Tổng quan & Workspace",
     tabTwofa: "Két bảo mật mã 2FA",
     tabDevType: "Cấu hình Dev Type & Stack",
     tabStorage: "Thống kê dung lượng & Files",
     tabCleanCache: "Dọn dẹp Dev Cache & Dependencies",
     tabOfflineSync: "Sync dữ liệu offline",
-    overviewAlt: "Ảnh chụp giao diện tổng quan workspace và lệnh của Projects Runner",
+    overviewAlt: "Giao diện Projects Runner 0.7.7 minh hoạ lệnh Build preview trong dự án hư cấu moss-studio; toàn bộ dữ liệu đã được thay thế",
     twofaAlt: "Ảnh chụp két xác thực 2FA tích hợp quản lý mã TOTP theo từng dự án",
     devTypeAlt: "Ảnh chụp cài đặt cấu hình loại dự án và công nghệ phát triển",
     storageAlt: "Ảnh chụp tính năng thống kê dung lượng và chi tiết file",
@@ -135,6 +135,16 @@ const vi = {
     viewAll: "Xem tất cả bản phát hành",
     releaseLink: "Xem bản phát hành {{version}}",
     releases: {
+      v077: {
+        title: "Kết nối trợ lý AI và khắc phục bản cài macOS",
+        details: [
+          "Kết nối trợ lý AI qua MCP để làm việc với dự án, lệnh và ghi chú trên máy theo quyền bạn cấp.",
+          "Chọn riêng quyền xem, sửa, chạy lệnh và đọc kết quả; thu hồi quyền khi không còn cần.",
+          "Cải thiện việc theo dõi lệnh đang chạy và quản lý mã xác thực theo dự án.",
+          "Sửa lỗi không lưu được ghi chú sau khi xoá hết nội dung nhưng vẫn giữ tiêu đề, đồng thời chỉnh lại độ rộng phần xem trước.",
+          "Khắc phục lỗi đóng gói bộ cài macOS và bổ sung kiểm tra các thành phần đi kèm.",
+        ],
+      },
       v074: {
         title: "Bổ sung tính năng Sync dữ liệu offline",
         details: [
@@ -185,7 +195,7 @@ const vi = {
       "Đây là ứng dụng desktop để lưu và chạy lệnh dự án từ một workspace có thể tái sử dụng.",
     twofaQ: "Trình xác thực 2FA tích hợp hoạt động như thế nào?",
     twofaA:
-      "Projects Runner tích hợp két mã TOTP 2FA mã hoá (Argon2id + XChaCha20-Poly1305) ngay trong workspace. Bạn có thể gắn mã 2FA vào từng dự án cụ thể, mở khoá nhanh bằng PIN 6 số và sao chép mã với cơ chế tự động xoá clipboard.",
+      "Bạn có thể gắn tài khoản xác thực vào từng dự án và giữ chúng trong kho được mã hoá. Kho hỗ trợ mở nhanh bằng PIN 6 số, tự khoá khi rời máy và tự xoá mã đã sao chép khỏi clipboard.",
     whoIsItForQ: "Ứng dụng này dành cho ai?",
     whoIsItForA:
       "Dành cho developer làm việc với nhiều repository, script hoặc dịch vụ local và muốn vòng lặp chạy lệnh nhanh hơn.",

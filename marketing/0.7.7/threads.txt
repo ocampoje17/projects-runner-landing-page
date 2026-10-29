@@ -1,0 +1,11 @@
+Mỗi lần đổi dự án, mình lại phải tìm lệnh chạy và ghi chú cũ 😅
+
+Mình làm Projects Runner để gom chúng lại, cần thì bấm Run.
+
+Bản 0.7.7 có thêm kết nối trợ lý AI: bạn chọn dự án và từng quyền trợ lý được dùng. Ghi chú cũng dễ dùng hơn, bản cài macOS đã được sửa.
+
+App miễn phí, mã nguồn mở, có trên Windows, macOS và Linux.
+
+Mọi người thường cất lệnh chạy dự án ở đâu?
+
+https://projects-runner.laychu.com

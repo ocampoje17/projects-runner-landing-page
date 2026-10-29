@@ -41,6 +41,7 @@ import {
   type AnalyticsConsent,
 } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import { LATEST_VERSION } from "@/lib/releases";
 
 const REPOSITORY_URL = "https://github.com/ocampoje17/projects-runner-app";
 const RELEASES_URL = "https://github.com/ocampoje17/projects-runner-app/releases";
@@ -321,7 +322,7 @@ function App() {
                   <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="2FA Security">
                     <ShieldCheck className="h-3.5 w-3.5" />
                   </button>
-                  <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="Flows">
+                  <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="Notes">
                     <Workflow className="h-3.5 w-3.5" />
                   </button>
                   <button className="flex h-6 w-6 items-center justify-center rounded text-muted-foreground hover:text-foreground" title="Dev Tools">
@@ -443,7 +444,7 @@ function App() {
                     <div>
                       <div className="flex items-center gap-1.5">
                         <span className="font-semibold text-xs text-foreground">{heroActiveProject}-app</span>
-                        <span className="rounded bg-primary/15 px-1 py-0.1 font-mono text-[9px] text-primary">v0.7.2</span>
+                        <span className="rounded bg-primary/15 px-1 py-0.1 font-mono text-[9px] text-primary">v{LATEST_VERSION}</span>
                       </div>
                       <div className="font-mono text-[10px] text-muted-foreground flex items-center gap-2">
                         <span>~/DEV/{heroActiveProject}</span>
@@ -741,7 +742,7 @@ function App() {
                 <span>&gt;</span>
                 <span className="text-foreground">
                   {previewTab === "overview"
-                    ? "overview.jpg"
+                    ? "projects-runner-077-demo.png"
                     : previewTab === "twofa"
                     ? "manage-2fa.jpg"
                     : previewTab === "offlineSync"
@@ -759,8 +760,11 @@ function App() {
                 <TabsContent value="overview">
                   <div className="overflow-hidden rounded-md border border-border/80">
                     <img
-                      src="/screenshot-new.jpg"
+                      src="/projects-runner-077-demo.png"
                       alt={t("preview.overviewAlt")}
+                      width={1573}
+                      height={1000}
+                      loading="lazy"
                       className="w-full object-cover"
                     />
                   </div>
@@ -823,7 +827,7 @@ function App() {
               {/* Editor status bar */}
               <div className="flex h-6 items-center justify-between border-t border-border bg-[var(--vscode-status,#007acc)] px-3 text-[10px] text-white font-mono select-none">
                 <div className="flex items-center gap-3">
-                  <span>PNG 1920x1080</span>
+                  <span>{previewTab === "overview" ? `DEMO DATA · ${LATEST_VERSION}` : "Projects Runner"}</span>
                   <span>100% Zoom</span>
                 </div>
                 <div className="flex items-center gap-2">
