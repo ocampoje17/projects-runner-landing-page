@@ -21,6 +21,8 @@ The overview image in `public/projects-runner-077-demo.png`, the feature image i
 
 The current feature image and Threads poster use the actual screenshot layouts, with all user-specific data replaced. The flat light theme, activity rail, vault sidebar, Settings sidebar, tabs, rows, and controls are retained. The edited source images are `public/projects-runner-077-2fa-demo.png` and `public/projects-runner-077-mcp-demo.png`. Raw desktop captures are kept outside the repository.
 
+The landing changelog image URL includes its content hash to refresh cached copies of the earlier illustration.
+
 The latest screenshot edits and composition prompts are in `image-prompts-v3.md`; source-specific identifiers are removed from that archive. `image-prompts-v2.md` and the prompts below record earlier assets. After confirmation, the screenshot-based image replaced the older concept image in the existing Unikorn changelog and both Talks on October 30, 2026.
 
 Created with the built-in image generation tool. Final edit prompts:

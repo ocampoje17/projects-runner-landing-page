@@ -4,7 +4,7 @@ export const releases = [
     version: "0.7.7",
     date: "2026-10-30",
     key: "v077",
-    image: "/projects-runner-077-features.png",
+    image: "/projects-runner-077-features.png?v=703d42f51c87",
   },
   { version: "0.7.4", date: "2026-10-24", key: "v074" },
   { version: "0.7.3", date: "2026-10-20", key: "v073" },
