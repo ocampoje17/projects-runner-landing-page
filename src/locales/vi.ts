@@ -14,10 +14,10 @@ const vi = {
     github: "GitHub",
   },
   hero: {
-    badge: "Không gian lệnh & bảo mật 2FA trên desktop",
+    badge: "Lệnh, 2FA và trợ lý AI qua MCP",
     title: "Giữ toàn bộ lệnh dự án của bạn trong một nơi đáng tin cậy.",
     description:
-      "Lưu lệnh và ghi chú theo từng dự án, chạy lại khi cần và kết nối trợ lý AI với những quyền do bạn chọn.",
+      "Giữ lệnh, ghi chú và mã 2FA theo từng dự án. Kết nối trợ lý AI qua MCP với từng quyền do bạn chọn.",
     download: "Mở trang phát hành",
     explore: "Xem tính năng",
   },
@@ -52,9 +52,9 @@ const vi = {
     twofaVaultTitle: "Két xác thực 2FA tích hợp",
     twofaVaultBody:
       "Giữ mã xác thực theo từng dự án trong kho được mã hoá. Mở khoá nhanh bằng PIN, sao chép mã khi cần và tự động khoá khi rời máy.",
-    fasterLoopsTitle: "Kết nối trợ lý AI",
+    fasterLoopsTitle: "Trợ lý AI qua MCP",
     fasterLoopsBody:
-      "Cho trợ lý AI đọc ghi chú, chạy lệnh đã lưu hoặc theo dõi kết quả qua MCP. Bạn chọn từng dự án và từng quyền, rồi có thể thu hồi khi cần.",
+      "Cho trợ lý đọc ghi chú, chạy lệnh và theo dõi kết quả. Việc lấy mã 2FA cần được cấp quyền, chọn riêng tài khoản và mở kho trong app.",
     personalPrefsTitle: "Thiết lập dùng hằng ngày",
     personalPrefsBody:
       "Chỉnh theme, accent, font terminal, timestamp và các chi tiết khác cho hợp cách làm việc của bạn.",
@@ -134,13 +134,16 @@ const vi = {
     latest: "Mới nhất",
     viewAll: "Xem tất cả bản phát hành",
     releaseLink: "Xem bản phát hành {{version}}",
+    featureImageAlt: "Minh hoạ Projects Runner 0.7.7 với hai phần nổi bật: mã 2FA theo dự án và chọn quyền cho trợ lý AI qua MCP. Toàn bộ dự án, tài khoản và mã đều là dữ liệu hư cấu.",
     releases: {
       v077: {
-        title: "Kết nối trợ lý AI và khắc phục bản cài macOS",
+        title: "2FA theo dự án, trợ lý AI qua MCP",
         details: [
-          "Kết nối trợ lý AI qua MCP để làm việc với dự án, lệnh và ghi chú trên máy theo quyền bạn cấp.",
-          "Chọn riêng quyền xem, sửa, chạy lệnh và đọc kết quả; thu hồi quyền khi không còn cần.",
-          "Cải thiện việc theo dõi lệnh đang chạy và quản lý mã xác thực theo dự án.",
+          "Cải thiện quản lý tài khoản 2FA theo dự án: giữ mã xác thực trong kho mã hoá và sao chép ngay trong app khi cần.",
+          "Kết nối trợ lý AI qua MCP để đọc ghi chú, chạy lệnh đã lưu và theo dõi kết quả theo quyền bạn cấp.",
+          "Muốn trợ lý lấy mã 2FA, bạn cần chọn riêng tài khoản, cấp quyền và mở kho trong app. Trợ lý không thể tự mở kho hoặc đọc khoá bí mật.",
+          "Chọn riêng từng dự án và từng quyền; có thể thu hồi khi cần.",
+          "Cải thiện việc theo dõi lệnh đang chạy.",
           "Sửa lỗi không lưu được ghi chú sau khi xoá hết nội dung nhưng vẫn giữ tiêu đề, đồng thời chỉnh lại độ rộng phần xem trước.",
           "Khắc phục lỗi đóng gói bộ cài macOS và bổ sung kiểm tra các thành phần đi kèm.",
         ],

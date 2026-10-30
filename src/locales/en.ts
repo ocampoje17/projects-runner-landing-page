@@ -14,10 +14,10 @@ const en = {
     github: "GitHub",
   },
   hero: {
-    badge: "Desktop command & 2FA workspace",
+    badge: "Commands, 2FA and AI through MCP",
     title: "Keep your project commands in one reliable place.",
     description:
-      "Keep commands and notes with each project, run them when needed, and connect an AI assistant with permissions you choose.",
+      "Keep commands, notes, and 2FA accounts with each project. Connect an AI assistant through MCP with permissions you choose.",
     download: "Open releases",
     explore: "See features",
   },
@@ -52,9 +52,9 @@ const en = {
     twofaVaultTitle: "Built-in 2FA authenticator vault",
     twofaVaultBody:
       "Keep project-linked verification codes in an encrypted vault. Unlock with a PIN, copy a code when needed, and lock automatically when you step away.",
-    fasterLoopsTitle: "Connect your AI assistant",
+    fasterLoopsTitle: "AI assistants through MCP",
     fasterLoopsBody:
-      "Let an AI assistant read notes, run saved commands, or follow output through MCP. Choose its projects and permissions, and revoke access when needed.",
+      "Let an assistant read notes, run commands, and follow output. Getting 2FA codes requires a separate permission, selected accounts, and an unlocked vault in the app.",
     personalPrefsTitle: "Comfortable daily setup",
     personalPrefsBody:
       "Adjust theme, accent, terminal font, timestamps, and other details to match how you work.",
@@ -134,13 +134,16 @@ const en = {
     latest: "Latest",
     viewAll: "View all releases",
     releaseLink: "View release {{version}}",
+    featureImageAlt: "Projects Runner 0.7.7 illustration highlighting project-linked 2FA codes and AI assistant permissions through MCP. All projects, accounts, and codes are fictional demo data.",
     releases: {
       v077: {
-        title: "Connect an AI assistant, with a macOS installer fix",
+        title: "Project-linked 2FA and AI through MCP",
         details: [
-          "Connect an AI assistant through MCP to work with local projects, commands, and notes within the permissions you grant.",
-          "Control viewing, editing, running commands, and reading output separately; revoke access when it is no longer needed.",
-          "Improved tracking of running commands and project-linked authenticator accounts.",
+          "Improved project-linked 2FA account management: keep authentication codes in an encrypted vault and copy them directly in the app.",
+          "Connect an AI assistant through MCP to read notes, run saved commands, and follow output within the permissions you grant.",
+          "Getting 2FA codes through the assistant requires selected accounts, a separate permission, and an unlocked vault in the app. The assistant cannot unlock the vault or read secret keys.",
+          "Choose each project and permission separately, and revoke access when needed.",
+          "Improved tracking of running commands.",
           "Fixed saving notes after clearing the body while keeping the title, and adjusted the preview width.",
           "Fixed macOS installer packaging and added checks for bundled components.",
         ],

@@ -65,6 +65,16 @@ export function Changelog() {
               <h3 className="text-sm font-semibold leading-relaxed text-foreground">
                 {t(`changelog.releases.${release.key}.title`)}
               </h3>
+              {"image" in release && (
+                <img
+                  src={release.image}
+                  alt={t("changelog.featureImageAlt")}
+                  width={1672}
+                  height={941}
+                  loading="lazy"
+                  className="mt-4 mb-4 h-auto w-full rounded-md border border-border"
+                />
+              )}
               <ul className="mt-2 list-disc space-y-1.5 pl-4 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                 {(t(`changelog.releases.${release.key}.details`, { returnObjects: true }) as string[]).map((detail) => (
                   <li key={detail}>{detail}</li>

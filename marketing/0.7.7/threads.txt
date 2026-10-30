@@ -1,11 +1,13 @@
-Mỗi lần đổi dự án, mình lại phải tìm lệnh chạy và ghi chú cũ 😅
+Projects Runner 0.7.7: 2FA theo dự án, AI qua MCP 🔐
 
-Mình làm Projects Runner để gom chúng lại, cần thì bấm Run.
+Giữ mã 2FA trong kho mã hoá, gắn với từng dự án.
 
-Bản 0.7.7 có thêm kết nối trợ lý AI: bạn chọn dự án và từng quyền trợ lý được dùng. Ghi chú cũng dễ dùng hơn, bản cài macOS đã được sửa.
+Cho trợ lý AI đọc ghi chú, chạy lệnh đã lưu qua MCP. Nếu cần lấy mã 2FA, bạn chọn tài khoản và cấp quyền riêng; kho phải đang mở.
 
-App miễn phí, mã nguồn mở, có trên Windows, macOS và Linux.
+Bạn chọn từng quyền và có thể thu hồi khi cần.
 
-Mọi người thường cất lệnh chạy dự án ở đâu?
+Bản này còn sửa lưu ghi chú và bộ cài macOS.
+
+Miễn phí, mã nguồn mở. Windows, macOS, Linux.
 
 https://projects-runner.laychu.com

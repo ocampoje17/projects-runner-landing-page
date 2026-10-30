@@ -1,5 +1,7 @@
 # Projects Runner 0.7.7
 
+Historical copy from the initial publication. See `revised-copy.md` for the current 2FA/MCP copy and publication status.
+
 ## Changelog
 
 Kết nối trợ lý AI với những quyền do bạn chọn

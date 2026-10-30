@@ -9,7 +9,9 @@
 - [Behind the Build Talk](https://unikorn.vn/t/projects-runner/them-ai-vao-projects-runner-minh)
 - [Contest entry](https://unikorn.vn/c/tools-for-builders/e/projects-runner)
 
-The contest introduction is prepared in `unikorn-drafts.md`; saving the public introduction through the browser is pending confirmation. Both Talks appear under the contest's Behind the Build section.
+Both Talks and the contest introduction were revised and saved on October 30, 2026 to highlight project-linked 2FA and MCP. Both Talks also use the new feature illustration and appear under the contest's Behind the Build section. See `revised-copy.md` for the current copy.
+
+The Unikorn changelog still has its original published copy: its Edit button does not open an editor, the dashboard only exposes creation and deletion, and the MCP connector has no changelog update tool. The replacement copy is ready in `revised-copy.md`; no duplicate entry was created.
 
 ## Threads
 
@@ -17,7 +19,9 @@ Use `threads.txt` with `threads.png`. The post is prepared for manual publishing
 
 ## Images
 
-The overview image in `public/projects-runner-077-demo.png` and the Threads poster use fictional data throughout. They are AI-edited illustrations, not evidence of running the app. Original project names, paths, scripts, file lists, sizes, counts, and dates have been replaced. Both images disclose demo data.
+The overview image in `public/projects-runner-077-demo.png`, the feature image in `public/projects-runner-077-features.png`, and the Threads poster use fictional data throughout. They are illustrations, not evidence of running the app. Original project names, paths, scripts, file lists, sizes, counts, and dates have been replaced. The images disclose demo data.
+
+The current feature image and Threads poster prominently show 2FA and MCP, with an explicit fictional-data disclosure. Their generation prompts are in `image-prompts-v2.md`. The older prompts below record the initial release assets.
 
 Created with the built-in image generation tool. Final edit prompts:
 
