@@ -1,6 +1,6 @@
 # Nội dung sửa: 2FA và MCP
 
-Hai Talk và giới thiệu contest bên dưới đã được lưu công khai trên Unikorn ngày 30/10/2026. Changelog Unikorn chưa sửa được vì nút Edit không mở biểu mẫu; phần Changelog dưới đây là bản sẵn sàng để thay thế. Bài Threads được chuẩn bị để đăng thủ công.
+Changelog, hai Talk và giới thiệu contest bên dưới đã được lưu công khai trên Unikorn ngày 30/10/2026. Changelog và hai Talk dùng ảnh mới làm nổi bật 2FA/MCP với dữ liệu hư cấu. Bài Threads được chuẩn bị để đăng thủ công.
 
 ## Changelog
 

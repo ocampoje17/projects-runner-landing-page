@@ -9,9 +9,7 @@
 - [Behind the Build Talk](https://unikorn.vn/t/projects-runner/them-ai-vao-projects-runner-minh)
 - [Contest entry](https://unikorn.vn/c/tools-for-builders/e/projects-runner)
 
-Both Talks and the contest introduction were revised and saved on October 30, 2026 to highlight project-linked 2FA and MCP. Both Talks also use the new feature illustration and appear under the contest's Behind the Build section. See `revised-copy.md` for the current copy.
-
-The Unikorn changelog still has its original published copy: its Edit button does not open an editor, the dashboard only exposes creation and deletion, and the MCP connector has no changelog update tool. The replacement copy is ready in `revised-copy.md`; no duplicate entry was created.
+The existing changelog, both Talks, and the contest introduction were revised and saved on October 30, 2026 to highlight project-linked 2FA and MCP. The changelog and both Talks use the new feature illustration. Both Talks appear under the contest's Behind the Build section. See `revised-copy.md` for the current copy. The changelog editor opens from the public Updates list; its direct detail page's Edit button did not open the editor. No duplicate entry was created.
 
 ## Threads
 
