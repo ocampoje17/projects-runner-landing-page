@@ -19,7 +19,9 @@ Use `threads.txt` with `threads.png`. The post is prepared for manual publishing
 
 The overview image in `public/projects-runner-077-demo.png`, the feature image in `public/projects-runner-077-features.png`, and the Threads poster use fictional data throughout. They are illustrations, not evidence of running the app. Original project names, paths, scripts, file lists, sizes, counts, and dates have been replaced. The images disclose demo data.
 
-The current feature image and Threads poster prominently show 2FA and MCP, with an explicit fictional-data disclosure. Their generation prompts are in `image-prompts-v2.md`. The older prompts below record the initial release assets.
+The current feature image and Threads poster use the actual screenshot layouts, with all user-specific data replaced. The flat light theme, activity rail, vault sidebar, Settings sidebar, tabs, rows, and controls are retained. The edited source images are `public/projects-runner-077-2fa-demo.png` and `public/projects-runner-077-mcp-demo.png`. Raw desktop captures are kept outside the repository.
+
+The latest screenshot edits and composition prompts are in `image-prompts-v3.md`; source-specific identifiers are removed from that archive. `image-prompts-v2.md` and the prompts below record earlier assets. The screenshot-based replacement images are prepared in the existing Unikorn edit forms and await confirmation before saving publicly.
 
 Created with the built-in image generation tool. Final edit prompts:
 
